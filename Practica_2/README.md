@@ -8,7 +8,7 @@ Claudio Omar Biale
 
 Implementar un módulo de software para trabajar con retardos no bloqueantes. 
 
-# Punto 1
+## Punto 1
 Implementar las funciones auxiliares necesarias para usar retardos no bloqueantes en un archivo fuente main.c con su correspondiente archivo de cabecera main.h.
 
 En main.h se deben ubicar los prototipos de las siguientes funciones y las declaraciones
