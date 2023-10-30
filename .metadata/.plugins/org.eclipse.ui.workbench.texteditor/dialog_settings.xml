@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="GPIO_pins_define"/>
+		<item key="selection" value="_Init"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="_Init"/>
+			<item value="_init"/>
+			<item value="Type"/>
+			<item value="type"/>
 			<item value="GPIO_pins_define"/>
 			<item value="GPIO_Init"/>
 			<item value="HAL_GPIO_Ini"/>
