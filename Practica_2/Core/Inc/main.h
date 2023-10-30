@@ -40,10 +40,6 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
-#define LED1_DURATION 100
-#define LED2_DURATION 500
-#define LED3_DURATION 1000
-
 typedef uint32_t tick_t;
 typedef bool bool_t;
 

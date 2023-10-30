@@ -28,6 +28,11 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
+typedef struct{
+  uint16_t pin;
+  GPIO_TypeDef *port;
+} led_t;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -137,11 +142,24 @@ int main(void)
   // arreglo con tiempos de retardos
   tick_t tiempos[RETARDOS] = {250 , 500 , 1000};
   // arreglo de acceso a leds
-  uint16_t leds[RETARDOS] = {0x0080 , 0x0100 , 0x0200};
+  led_t leds[RETARDOS] = {
+		  {
+				  .pin = LD1_Pin,
+				  .port = LD1_GPIO_Port
+		  },
+		  {
+				  .pin = LD2_Pin,
+				  .port = LD2_GPIO_Port
+		  },
+		  {
+				  .pin = LD3_Pin,
+				  .port = LD3_GPIO_Port
+		  }
+  };
 
   // inicializo las salidas de los leds y los retardos
   for(i = 0; i < RETARDOS; i++) {
-	  HAL_GPIO_WritePin(GPIOB, leds[i], 0);
+	  HAL_GPIO_WritePin(leds[i].port, leds[i].pin, 0);
 	  delayInit(&retardos[i], tiempos[i]);
   }
 
@@ -154,7 +172,7 @@ int main(void)
     /* USER CODE END WHILE */
 	  for (int i = 0; i < RETARDOS; i++) {
 	      if (delayRead(&retardos[i]) == true) {
-	    	  HAL_GPIO_TogglePin(GPIOB, leds[i]);
+	    	  HAL_GPIO_TogglePin(leds[i].port, leds[i].pin);
 	      }
 	  }
 
