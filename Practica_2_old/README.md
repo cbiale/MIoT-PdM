@@ -2,8 +2,8 @@
 
 ## Materia y alumno
 
-Materia: Programación de microcontroladores - Carrera de Especialización en Sistemas Embebidos - Facultad de Ingeniería - Universidad de Buenos Aires
-Alumno: Claudio Omar Biale
+- Materia: Programación de microcontroladores - Carrera de Especialización en Sistemas Embebidos - Facultad de Ingeniería - Universidad de Buenos Aires
+- Alumno: Claudio Omar Biale
 
 ## Objetivo:
 
