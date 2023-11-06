@@ -52,12 +52,5 @@ bool_t delayRead( delay_t * delay );
  */
 void delayWrite( delay_t * delay, tick_t duration );
 
-/**
- * @brief Se ejecuta en caso de que ocurran errores
- *
- * @param Ninguno
- * @retval Ninguno
- */
-static void manejadorErrores(void);
 
 #endif /* API_INC_API_DELAY_H_ */

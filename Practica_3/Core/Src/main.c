@@ -119,7 +119,7 @@ int main(void)
   // arreglo con retardos
   delay_t retardos[RETARDOS];
   // arreglo con tiempos de retardos
-  tick_t tiempos[RETARDOS] = {250 , 500 , 1000};
+  tick_t tiempos[RETARDOS] = {200 , 400 , 800};
   // arreglo de acceso a leds
   led_t leds[RETARDOS] = {
 		  {
