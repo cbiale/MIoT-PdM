@@ -138,7 +138,7 @@ int main(void)
 
   // inicializo las salidas de los leds y los retardos
   for(i = 0; i < RETARDOS; i++) {
-	  HAL_GPIO_WritePin(leds[i].port, leds[i].pin, 0);
+	  HAL_GPIO_WritePin(leds[i].port, leds[i].pin, GPIO_PIN_RESET);
 	  delayInit(&retardos[i], tiempos[i]);
 	  // Se puede comentar la linea previa y descomentar esta para ver manejo de errores
 	  // al pasar puntero a NULL en lugar de puntero a delay_t

@@ -47,8 +47,19 @@ void delayWrite( delay_t * delay, tick_t duration ) {
 }
 
 static void manejadorErrores(void) {
-    /* Cambia el LED3 en caso de error */
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
+    // en caso de error se encienden los 3 leds
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+	// se espera
+	HAL_Delay(2000);
+	// se vuelve a cambiar el estado de los 3 leds
+	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
+	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_3);
+	// se espera
+	HAL_Delay(1000);
+	// en un bucle infinito se va cambiando el estado del led 3
 	while (true) {
 		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
 		HAL_Delay(1000);

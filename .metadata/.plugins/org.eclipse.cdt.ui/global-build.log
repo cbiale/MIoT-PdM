@@ -275,3 +275,176 @@ arm-none-eabi-size   Practica_3.elf
    7444	     20	   3492	  10956	   2acc	Practica_3.elf
 Finished building: default.size.stdout
  
+07:45:58 **** Incremental Build of configuration Release for project Practica_2 ****
+make -j8 all 
+arm-none-eabi-size   Practica_2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7384	     20	   3492	  10896	   2a90	Practica_2.elf
+Finished building: default.size.stdout
+ 
+07:45:58 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/API/Src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_delay.d" -MT"Drivers/API/Src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_delay.o"
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
+arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
+   text	   data	    bss	    dec	    hex	filename
+   7524	     20	   3492	  11036	   2b1c	Practica_3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica_3.list
+ 
+07:46:25 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:26:
+/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc/API_delay.h:61:13: warning: 'manejadorErrores' declared 'static' but never defined [-Wunused-function]
+   61 | static void manejadorErrores(void);
+      |             ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
+arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
+   text	   data	    bss	    dec	    hex	filename
+   7516	     20	   3492	  11028	   2b14	Practica_3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica_3.list
+ 
+07:46:51 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-size   Practica_3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7516	     20	   3492	  11028	   2b14	Practica_3.elf
+Finished building: default.size.stdout
+ 
+07:47:00 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-size   Practica_3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7516	     20	   3492	  11028	   2b14	Practica_3.elf
+Finished building: default.size.stdout
+ 
+07:47:15 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/API/Src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_delay.d" -MT"Drivers/API/Src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_delay.o"
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
+arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
+   text	   data	    bss	    dec	    hex	filename
+   7520	     20	   3492	  11032	   2b18	Practica_3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica_3.list
+ 
+07:47:21 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-size   Practica_3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7520	     20	   3492	  11032	   2b18	Practica_3.elf
+Finished building: default.size.stdout
+ 
+08:06:10 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/API/Src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_delay.d" -MT"Drivers/API/Src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_delay.o"
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
+arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
+   text	   data	    bss	    dec	    hex	filename
+   7496	     20	   3492	  11008	   2b00	Practica_3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica_3.list
+ 
+08:06:18 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-size   Practica_3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7496	     20	   3492	  11008	   2b00	Practica_3.elf
+Finished building: default.size.stdout
+ 
+08:06:35 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/API/Src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_delay.d" -MT"Drivers/API/Src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_delay.o"
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
+arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
+   text	   data	    bss	    dec	    hex	filename
+   7496	     20	   3492	  11008	   2b00	Practica_3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica_3.list
+ 
+08:10:18 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:26:
+/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc/API_delay.h:61:13: warning: 'manejadorErrores' declared 'static' but never defined [-Wunused-function]
+   61 | static void manejadorErrores(void);
+      |             ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
+arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
+   text	   data	    bss	    dec	    hex	filename
+   7496	     20	   3492	  11008	   2b00	Practica_3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica_3.list
+ 
+08:10:29 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-size   Practica_3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7496	     20	   3492	  11008	   2b00	Practica_3.elf
+Finished building: default.size.stdout
+ 
+08:11:13 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/API/Src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_delay.d" -MT"Drivers/API/Src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_delay.o"
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
+arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
+   text	   data	    bss	    dec	    hex	filename
+   7496	     20	   3492	  11008	   2b00	Practica_3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica_3.list
+ 
+08:11:22 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-size   Practica_3.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7496	     20	   3492	  11008	   2b00	Practica_3.elf
+Finished building: default.size.stdout
+ 
+08:12:34 **** Incremental Build of configuration Release for project Practica_3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:26:
+/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc/API_delay.h:61:13: warning: 'manejadorErrores' declared 'static' but never defined [-Wunused-function]
+   61 | static void manejadorErrores(void);
+      |             ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
+arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
+   text	   data	    bss	    dec	    hex	filename
+   7504	     20	   3492	  11016	   2b08	Practica_3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica_3.list
+ 

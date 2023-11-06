@@ -1,10 +1,21 @@
-07:36:21 **** Incremental Build of configuration Release for project Practica_3 ****
+08:12:34 **** Incremental Build of configuration Release for project Practica_3 ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:26:
+/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/Drivers/API/Inc/API_delay.h:61:13: warning: 'manejadorErrores' declared 'static' but never defined [-Wunused-function]
+   61 | static void manejadorErrores(void);
+      |             ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Practica_3.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_3/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica_3.elf
+ 
 arm-none-eabi-size   Practica_3.elf 
+arm-none-eabi-objdump -h -S  Practica_3.elf  > "Practica_3.list"
    text	   data	    bss	    dec	    hex	filename
-   7444	     20	   3492	  10956	   2acc	Practica_3.elf
+   7504	     20	   3492	  11016	   2b08	Practica_3.elf
 Finished building: default.size.stdout
  
+Finished building: Practica_3.list
+ 
 
-07:36:21 Build Finished. 0 errors, 0 warnings. (took 252ms)
+08:12:34 Build Finished. 0 errors, 1 warnings. (took 504ms)
 
