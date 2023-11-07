@@ -1,0 +1,49 @@
+\chapter{Práctica 3}
+\hypertarget{md_README}{}\label{md_README}\index{Práctica 3@{Práctica 3}}
+\label{md_README_autotoc_md0}%
+\Hypertarget{md_README_autotoc_md0}%
+ \hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Autor de la práctica}{Autor de la práctica}}\label{md_README_autotoc_md1}
+Claudio Omar Biale\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Objetivo\+:}{Objetivo:}}\label{md_README_autotoc_md2}
+Implementar un módulo de software para trabajar con retardos no bloqueantes a partir de las funciones creadas en la práctica 2.\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Punto 1}{Punto 1}}\label{md_README_autotoc_md3}
+Crear un nuevo proyecto como copia del proyecto realizado para la práctica 2. Crear una carpeta API dentro de la carpeta Drivers en la estructura de directorios del nuevo proyecto. Crear dentro de la carpeta API, subcapetas /\+Src y /\+Inc.
+
+Encapsular las funciones necesarias para usar retardos no bloqueantes en un archivo fuente \doxylink{API__delay_8c}{API\+\_\+delay.\+c} con su correspondiente archivo de cabecera \doxylink{API__delay_8h}{API\+\_\+delay.\+h}, y ubicar estos archivos en la carpeta API creada.
+
+En \doxylink{API__delay_8h}{API\+\_\+delay.\+h} se deben ubicar los prototipos de las funciones y declaraciones
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ uint32\_t\ \mbox{\hyperlink{API__delay_8h_a451a7d205dfb766727eba25c6e61c687}{tick\_t}};\ \textcolor{comment}{//\ Qué\ biblioteca\ se\ debe\ incluir\ para\ que\ esto\ compile?}}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{API__delay_8h_a2b21255bd7f7192db778983b15089208}{bool\_t}};\ \ \ \ \ \ \textcolor{comment}{//\ Qué\ biblioteca\ se\ debe\ incluir\ para\ que\ esto\ compile?}}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{\ \ \ \mbox{\hyperlink{API__delay_8h_a451a7d205dfb766727eba25c6e61c687}{tick\_t}}\ startTime;}
+\DoxyCodeLine{\ \ \ \mbox{\hyperlink{API__delay_8h_a451a7d205dfb766727eba25c6e61c687}{tick\_t}}\ duration;}
+\DoxyCodeLine{\ \ \ \mbox{\hyperlink{API__delay_8h_a2b21255bd7f7192db778983b15089208}{bool\_t}}\ running;}
+\DoxyCodeLine{\}\ \mbox{\hyperlink{structdelay__t}{delay\_t}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{API__delay_8h_a6613427678149cadd03bac79e79475f3}{delayInit}}(\ \mbox{\hyperlink{structdelay__t}{delay\_t}}\ *\ delay,\ \mbox{\hyperlink{API__delay_8h_a451a7d205dfb766727eba25c6e61c687}{tick\_t}}\ duration\ );}
+\DoxyCodeLine{\mbox{\hyperlink{API__delay_8h_a2b21255bd7f7192db778983b15089208}{bool\_t}}\ \mbox{\hyperlink{API__delay_8h_afecaa44225b94ebfb354e4b6b7e6e9ce}{delayRead}}(\ \mbox{\hyperlink{structdelay__t}{delay\_t}}\ *\ delay\ );}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{API__delay_8h_a2af041ac01bb3db8ecf87ce371fac67d}{delayWrite}}(\ \mbox{\hyperlink{structdelay__t}{delay\_t}}\ *\ delay,\ \mbox{\hyperlink{API__delay_8h_a451a7d205dfb766727eba25c6e61c687}{tick\_t}}\ duration\ );}
+
+\end{DoxyCode}
+
+
+En \doxylink{API__delay_8c}{API\+\_\+delay.\+c} se deben ubicar la implementación de todas las funciones.
+
+nota\+: cuando se agregar carpetas a un proyecto de eclipse se deben incluir en el include path para que se incluya su contenido en la compilación. Se debe hacer clic derecho sobre la carpeta con los archivos de encabezamiento y seleccionar la opción add/remove include path.\hypertarget{md_README_autotoc_md4}{}\doxysubsection{\texorpdfstring{Punto 2}{Punto 2}}\label{md_README_autotoc_md4}
+Implementar un programa que utilice retardos no bloqueantes y haga titilar en forma periódica e independiente los tres leds de la placa NUCLEO-\/\+F429\+ZI de acuerdo a una secuencia predeterminada como en la práctica 1.
+
+Cada led debe permanecer encendido 200 ms. No debe encenderse más de un led simultáneamente en ningún momento.
+
+Para pensar luego de resolver el ejercicio\+:
+
+
+\begin{DoxyItemize}
+\item ¿\+Es suficientemente clara la consigna 2 o da lugar a implementaciones con distinto comportamiento? ¿\+Qué pasa con la separación temporal entre encendidos sucesivos de leds, se hace uno a continuación del otro o se espera un tiempo entre encendidos?
+\item ¿\+Se pueden cambiar los tiempos de encendido de cada led fácilmente en un solo lugar del código o estos están hardcodeados? ¿\+Hay números “mágicos”?
+\item ¿\+Qué bibliotecas estándar se debieron agregar a \doxylink{API__delay_8h}{API\+\_\+delay.\+h} para que el código compile? Si las funcionalidades de una API propia crecieran, habría que pensar cuál sería el mejor lugar para incluir esas bibliotecas y algunos typedefs que se usan en el ejercicio.
+\item ¿\+Es adecuado el control de los parámetros pasados por el usuario que se hace en las funciones implementadas? ¿\+Se controla que sean valores válidos? ¿\+Se controla que estén dentro de los rangos correctos?
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysection{\texorpdfstring{Consideraciones}{Consideraciones}}\label{md_README_autotoc_md5}
+La funcion {\ttfamily manejador\+Errores()} se define como {\ttfamily static}, por ende la documentación se encuentra en el archivo {\ttfamily \doxylink{API__delay_8c}{API\+\_\+delay.\+c}}.
+
+Tengo como tarea verificar la generación de documentación con {\ttfamily Doxygen} en este caso. 

@@ -27,7 +27,7 @@ typedef struct{
 
 /**
  * @brief Inicializa la estructura que almacena información del retardo
- *        Note: se debe llamar antes que cualquier otra función maneja retardos
+ *        Nota: se debe llamar antes que cualquier otra función maneja retardos
  *
  * @param Puntero a la estructura delay_t donde se almacena información del retardo
  * @param Duración del retardo (expresado en ms)
