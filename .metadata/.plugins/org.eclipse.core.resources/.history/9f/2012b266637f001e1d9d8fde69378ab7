@@ -1,0 +1,54 @@
+/*
+ * API_debounce.c
+ *
+ *  Created on: Nov 8, 2023
+ *      Author: cbiale
+ */
+#include "API_debounce.h"
+
+#define USER_Btn_Pin GPIO_PIN_13
+#define USER_Btn_GPIO_Port GPIOC
+
+typedef enum
+{
+    BUTTON_UP,
+    BUTTON_FALLING,
+    BUTTON_DOWN,
+    BUTTON_RISING
+} debounceState_t;
+
+/* El tiempo de anti-rebote debe ser de 40 ms con un retardo no bloqueante como los
+ * implementados en la práctica 3.
+ */
+const uint32_t duracionRetardo = 40u;
+
+debounceState_t estado;
+delay_t retardo;
+
+void debounceFSM_init() {
+	estado = BUTTON_UP;
+}
+
+void debounceFSM_update() {
+	switch (estado) {
+	case BUTTON_UP:
+		if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == 0) {
+			estado = BUTTON_FALLING;
+
+		}
+		break;
+	case BUTTON_FALLING:
+		break;
+	case BUTTON_DOWN:
+		break;
+	case BUTTON_RISING:
+		break;
+	default:
+		break;
+	}
+}
+
+/* La función readKey debe leer una variable interna del módulo y devolver true o false si la tecla fue presionada.  Si devuelve true, debe resetear (poner en false) el estado de la variable.*/
+bool_t readKey() {
+
+}
