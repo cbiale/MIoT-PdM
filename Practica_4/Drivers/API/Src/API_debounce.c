@@ -11,8 +11,11 @@
  */
 #define USER_Btn_Pin GPIO_PIN_13
 #define USER_Btn_GPIO_Port GPIOC
+
+/* Se saca debido a uso de readKey()
 #define LD1_Pin GPIO_PIN_0
 #define LD1_GPIO_Port GPIOB
+*/
 
 /*
  * Enumeración que define los estados posibles
@@ -30,12 +33,6 @@ typedef enum
  */
 const uint32_t duracionRetardo = 40u;
 /*
- * Velocidades de toggleo del led (de acuerdo al enunciado 100 y 500 ms)
- */
-const uint32_t duracionVelocidadBaja = 100u;
-const uint32_t duracionVelocidadAlta = 500u;
-
-/*
  * Variable que mantiene el estado de la MEF
  */
 static debounceState_t estado;
@@ -43,14 +40,6 @@ static debounceState_t estado;
  * Retardo usado para en control anti-retote
  */
 static delay_t retardo;
-/*
- * Retardo usado para el control de la velocidad de toggleo del led
- */
-static delay_t retardoLed;
-/*
- * Variable que mantiene el retardo actual
- */
-static uint32_t duracionVelocidadActual;
 /*
  * Variable interna usada por readKey() la inicializo en este punto
  */
@@ -60,6 +49,9 @@ static bool_t estadoReadKey = false;
  * acciones realizadas al presionar el botón
  */
 static void buttonPressed() {
+	// La logica de velocidad la saco del driver para ello uso readKey()
+
+	/* dejo como referencia lo original
 	// se verifica la velocidad actual y se cambia por la no usada
 	if (duracionVelocidadBaja == duracionVelocidadActual) {
 		duracionVelocidadActual = duracionVelocidadAlta;
@@ -68,6 +60,8 @@ static void buttonPressed() {
 	}
 	// se cambia el retardo asociado al toggleo del led
 	delayWrite(&retardoLed, duracionVelocidadActual);
+	*/
+	estadoReadKey = true;
 }
 
 /*
@@ -82,11 +76,15 @@ static void buttonReleassed() {
 void debounceFSM_init() {
 	// estado inicial
 	estado = BUTTON_UP;
+
+	// se saca por uso de readKey()
+	/*
 	// velocidad inicial
 	duracionVelocidadActual = duracionVelocidadBaja;
 	// inicio y lectura para activar del retardo de toggleo
 	delayInit(&retardoLed, duracionVelocidadActual);
 	delayRead(&retardoLed);
+	*/
 }
 
 /*
@@ -99,8 +97,6 @@ void debounceFSM_update() {
 		if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == 0) {
 			// cambia de estado
 			estado = BUTTON_FALLING;
-			// variable tipo bool_t global privada que se ponga en true cuando ocurre un flanco descendente
-			// estadoReadKey = true;
 			// inicia y lee retardo anti-rebote
 			delayInit(&retardo, duracionRetardo);
 			delayRead(&retardo);
@@ -147,12 +143,10 @@ void debounceFSM_update() {
 		}
 		break;
 	default:
+		debounceFSM_init();
 		break;
 	}
-	// lee el retardo del led y si se cumple cambia el estado del led
-	if (delayRead(&retardoLed)) {
-		HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
-	}
+
 }
 
 /* La función readKey debe leer una variable interna del módulo y devolver true o false si la tecla fue presionada.  Si devuelve true, debe resetear (poner en false) el estado de la variable.*/

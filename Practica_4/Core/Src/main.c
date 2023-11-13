@@ -23,10 +23,27 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "API_delay.h"
+#include "API_debounce.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+
+/*
+ * Velocidades de toggleo del led (de acuerdo al enunciado 100 y 500 ms)
+ */
+const uint32_t duracionVelocidadBaja = 100u;
+const uint32_t duracionVelocidadAlta = 500u;
+/*
+ * Variable que mantiene el retardo actual
+ */
+uint32_t duracionVelocidadActual;
+/*
+ * Retardo usado para el control de la velocidad de toggleo del led
+ */
+delay_t retardoLed;
 
 /* USER CODE END PTD */
 
@@ -103,7 +120,15 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
+
+  // inicia FSM
   debounceFSM_init();
+  // velocidad inicial
+  duracionVelocidadActual = duracionVelocidadBaja;
+  // inicio y lectura para activar del retardo de toggleo
+  delayInit(&retardoLed, duracionVelocidadActual);
+  delayRead(&retardoLed);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -111,8 +136,25 @@ int main(void)
 
   while (1)
   {
+	  // actualiza la FSM
 	  debounceFSM_update();
-    /* USER CODE END WHILE */
+	  // si se ha presionado
+	  if (readKey()) {
+		  // controla velocidad y cambia velocidad
+		  if (duracionVelocidadBaja == duracionVelocidadActual) {
+			  duracionVelocidadActual = duracionVelocidadAlta;
+		  } else {
+			  duracionVelocidadActual = duracionVelocidadBaja;
+		  }
+		  // se cambia el retardo asociado al toggleo del led
+		  delayWrite(&retardoLed, duracionVelocidadActual);
+	  }
+	  // cambio led
+	  if (delayRead(&retardoLed)) {
+	  	HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+	  }
+
+	  /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
