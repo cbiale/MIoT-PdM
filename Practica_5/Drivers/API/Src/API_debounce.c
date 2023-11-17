@@ -68,7 +68,6 @@ void debounceFSM_init() {
 	if (uartInit() == false) {
 		manejadorErrores();
 	}
-
 }
 
 /*
@@ -78,7 +77,7 @@ void debounceFSM_update() {
 	switch (estado) {
 	case BUTTON_UP:
 		// realiza una lectura del botón y si se encuentra presionado
-		if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == 0) {
+		if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) != 0) {
 			// cambia de estado
 			estado = BUTTON_FALLING;
 			// inicia y lee retardo anti-rebote
@@ -90,7 +89,7 @@ void debounceFSM_update() {
 		// verifica que se cumpla el retardo anti-rebote
 		if (delayRead(&retardo)) {
 			// realiza una lectura del botón y si se encuentra presionado
-			if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == 0) {
+			if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) != 0) {
 				// cambia de estado
 				estado = BUTTON_DOWN;
 				// invoca al evento asociado a el nuevo estado
@@ -103,7 +102,7 @@ void debounceFSM_update() {
 		break;
 	case BUTTON_DOWN:
 		// realiza una lectura del botón y si no se encuentra presionado
-		if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) != 0) {
+		if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == 0) {
 			// cambia de estado
 			estado = BUTTON_RISING;
 			// inicia y lee retardo anti-rebote
@@ -115,7 +114,7 @@ void debounceFSM_update() {
 		// verifica que se cumpla el retardo anti-rebote
 		if (delayRead(&retardo)) {
 			// realiza una lectura del botón y si no se encuentra presionado
-			if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) != 0) {
+			if (HAL_GPIO_ReadPin(USER_Btn_GPIO_Port, USER_Btn_Pin) == 0) {
 				// cambia de estado
 				estado = BUTTON_UP;
 				// invoca al evento asociado a el nuevo estado

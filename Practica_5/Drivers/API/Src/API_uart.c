@@ -14,9 +14,13 @@
 static UART_HandleTypeDef UartHandle;
 
 bool_t uartInit() {
+
 	// retorna el estado del inicio de la UART
 	bool_t estado = false;
-	UartHandle.Instance = USART2;
+	// variable usada para imprimir datos de la UART
+    char cadena[100];
+
+	UartHandle.Instance = USART3;
 	UartHandle.Init.BaudRate = 115200;
 	UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
 	UartHandle.Init.StopBits = UART_STOPBITS_1;
@@ -26,11 +30,11 @@ bool_t uartInit() {
 	UartHandle.Init.OverSampling = UART_OVERSAMPLING_16;
 
 	if (HAL_UART_Init(&UartHandle) == HAL_OK) {
-	    char cadena[100];
+		estado = true;
 	    snprintf(cadena, sizeof(cadena), "Valores de configuración de USART:\r\n");
 	    uartSendString((uint8_t *) cadena);
-	    snprintf(cadena, sizeof(cadena), "  Velocidad en baudios: %llu\r\n", (unsigned long long) UartHandle.Init.BaudRate);
-	    uartSendString((uint8_t *) cadena);
+//	    snprintf(cadena, sizeof(cadena), "  Velocidad en baudios: %llu\r\n", (unsigned long long) UartHandle.Init.BaudRate);
+//	    uartSendString((uint8_t *) cadena);
 	}
     return estado;
 }

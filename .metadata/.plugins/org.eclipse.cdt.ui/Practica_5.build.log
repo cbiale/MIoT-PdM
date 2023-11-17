@@ -1,17 +1,10 @@
-06:42:45 **** Incremental Build of configuration Debug for project Practica_5 ****
+07:25:31 **** Incremental Build of configuration Debug for project Practica_5 ****
 make -j8 all 
-arm-none-eabi-gcc "../Drivers/API/Src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F439xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_5/Drivers/API" -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_5/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_uart.d" -MT"Drivers/API/Src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_uart.o"
-arm-none-eabi-gcc -o "Practica_5.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Practica_5/STM32F439ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica_5.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica_5.elf
- 
 arm-none-eabi-size   Practica_5.elf 
-arm-none-eabi-objdump -h -S  Practica_5.elf  > "Practica_5.list"
    text	   data	    bss	    dec	    hex	filename
-  12496	     20	   3492	  16008	   3e88	Practica_5.elf
+  16972	    100	   3924	  20996	   5204	Practica_5.elf
 Finished building: default.size.stdout
  
-Finished building: Practica_5.list
- 
 
-06:42:46 Build Finished. 0 errors, 0 warnings. (took 899ms)
+07:25:32 Build Finished. 0 errors, 0 warnings. (took 302ms)
 
