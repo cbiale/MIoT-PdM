@@ -12,7 +12,7 @@
 #include <string.h> // por uso de strlen()
 #include <stdio.h> // por uso de snprintf()
 #include "API_delay.h" // por uso de manejadorErrores()
-
+#include <inttypes.h> // para imprimir valores uint_t al usar snprintf()
 
 /**
  * @brief Tipo de datos que define un valor lógico.

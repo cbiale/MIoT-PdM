@@ -33,8 +33,8 @@ bool_t uartInit() {
 		estado = true;
 	    snprintf(cadena, sizeof(cadena), "Valores de configuración de USART:\r\n");
 	    uartSendString((uint8_t *) cadena);
-//	    snprintf(cadena, sizeof(cadena), "  Velocidad en baudios: %llu\r\n", (unsigned long long) UartHandle.Init.BaudRate);
-//	    uartSendString((uint8_t *) cadena);
+	    snprintf(cadena, sizeof(cadena), "Velocidad en baudios: %" PRIu32 " \r\n", UartHandle.Init.BaudRate);
+	    uartSendString((uint8_t *) cadena);
 	}
     return estado;
 }
