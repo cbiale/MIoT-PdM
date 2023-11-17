@@ -11,6 +11,7 @@ Repositorio de proyectos de la materia Programación de microcontroladores corre
 - Práctica 2: https://github.com/cbiale/MIoT-PdM/tree/main/Practica_2
 - Práctica 3: https://github.com/cbiale/MIoT-PdM/tree/main/Practica_3
 - Práctica 4: https://github.com/cbiale/MIoT-PdM/tree/main/Practica_4
+- Práctica 5: https://github.com/cbiale/MIoT-PdM/tree/main/Practica_5
 
 # Consideraciones
 
