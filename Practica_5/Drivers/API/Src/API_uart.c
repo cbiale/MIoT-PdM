@@ -29,11 +29,24 @@ bool_t uartInit() {
 	UartHandle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
 	UartHandle.Init.OverSampling = UART_OVERSAMPLING_16;
 
+	// si se inicia la UART, cambia estado e imprime datos de la UART
 	if (HAL_UART_Init(&UartHandle) == HAL_OK) {
 		estado = true;
 	    snprintf(cadena, sizeof(cadena), "Valores de configuración de USART:\r\n");
 	    uartSendString((uint8_t *) cadena);
 	    snprintf(cadena, sizeof(cadena), "Velocidad en baudios: %" PRIu32 " \r\n", UartHandle.Init.BaudRate);
+	    uartSendString((uint8_t *) cadena);
+	    snprintf(cadena, sizeof(cadena), "Largo de palabra: %" PRIu32 " \r\n", UartHandle.Init.WordLength);
+	    uartSendString((uint8_t *) cadena);
+	    snprintf(cadena, sizeof(cadena), "Bits de parada: %" PRIu32 " \r\n", UartHandle.Init.StopBits);
+	    uartSendString((uint8_t *) cadena);
+	    snprintf(cadena, sizeof(cadena), "Paridad: %" PRIu32 " \r\n", UartHandle.Init.Parity);
+	    uartSendString((uint8_t *) cadena);
+	    snprintf(cadena, sizeof(cadena), "Modo: %" PRIu32 " \r\n", UartHandle.Init.Mode);
+	    uartSendString((uint8_t *) cadena);
+	    snprintf(cadena, sizeof(cadena), "Control de flujo de hardware: %" PRIu32 " \r\n", UartHandle.Init.HwFlowCtl);
+	    uartSendString((uint8_t *) cadena);
+	    snprintf(cadena, sizeof(cadena), "Sobre muestreo 8: %" PRIu32 " \r\n", UartHandle.Init.OverSampling);
 	    uartSendString((uint8_t *) cadena);
 	}
     return estado;

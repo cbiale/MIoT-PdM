@@ -46,7 +46,7 @@ static bool_t estadoReadKey = false;
  */
 static void buttonPressed() {
 	estadoReadKey = true;
-	uartSendString((uint8_t *) "Boton presionado\r\n");
+	uartSendString((uint8_t *) "Botón presionado\r\n");
 }
 
 /*
