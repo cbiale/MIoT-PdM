@@ -1,0 +1,48 @@
+/*
+ * API_uart.c
+ *
+ *  Created on: Nov 16, 2023
+ *      Author: cbiale
+ */
+
+
+#include "API_uart.h"
+
+
+static UART_HandleTypeDef UartHandle;
+
+
+bool_t uartInit() {
+	// retorna el estado del inicio de la UART
+	bool_t estado = false;
+	UartHandle.Instance = USART2;
+	UartHandle.Init.BaudRate = 115200;
+	UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
+	UartHandle.Init.StopBits = UART_STOPBITS_1;
+	UartHandle.Init.Parity = UART_PARITY_NONE;
+	UartHandle.Init.Mode = UART_MODE_TX_RX;
+	UartHandle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+	UartHandle.Init.OverSampling = UART_OVERSAMPLING_16;
+
+	if (HAL_UART_Init(&huartApi) == HAL_OK) {
+		estado = true;
+		// ...
+    }
+
+    return estado;
+}
+
+void uartSendString(uint8_t * pstring) {
+	if (pstring == NULL) {
+		return;
+	}
+    HAL_UART_Transmit(&UartHandle, pstring, strlen((char *)pstring), HAL_MAX_DELAY);
+}
+
+void uartSendStringSize(uint8_t * pstring, uint16_t size) {
+
+}
+
+void uartReceiveStringSize(uint8_t * pstring, uint16_t size) {
+
+}
