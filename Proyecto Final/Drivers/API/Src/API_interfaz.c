@@ -108,13 +108,10 @@ void interfaz_actualizar() {
 static void mostrar_datos(bool mostrar_lcd, bool mostrar_uart,
 		bool forzar_lectura) {
 	// verifica si hay una nueva lectura
-	// uint8_t nueva_lectura = sensor_fake_nueva_lectura();
 	uint8_t nueva_lectura = sensor_fake_nueva_lectura();
 	// si hay una nueva lectura o forzar en true
 	if (nueva_lectura != estado_interno.lectura_anterior || forzar_lectura) {
 		estado_interno.lectura_anterior = nueva_lectura;
-		// estado_interno.temperatura = sensor_fake_obtener_temperatura();
-		// estado_interno.humedad = sensor_fake_obtener_humedad();
 		estado_interno.temperatura = sensor_fake_obtener_temperatura();
 		estado_interno.humedad = sensor_fake_obtener_humedad();
 		if (mostrar_lcd) {
