@@ -13,6 +13,6 @@ El sistema tiene dos estados donde:
 
 ## Consideraciones
 
-No fue posible implementar el sistema usando el sensor BMP280 y botones como se encuentra en la propuesta de trabajo.
+No fue posible implementar el sistema usando el sensor BMP280 y botones como se ha definido en la propuesta de proyecto final.
 
  
