@@ -16,4 +16,4 @@ Repositorio de proyectos de la materia Programación de microcontroladores corre
 
 # Consideraciones
 
-La placa usada en las prácticas es `Nucleo-F29ZI`.
+La placa usada en las prácticas es `Nucleo-F429ZI`.
