@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="read_data"/>
+		<item key="selection" value="I2C"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="i2c"/>
+			<item value="0x0F"/>
+			<item value="iniciar_mo"/>
+			<item value="dht_"/>
+			<item value="Pin"/>
+			<item value="PE_"/>
+			<item value="PE"/>
 			<item value="read_data"/>
 			<item value="read_Data"/>
 			<item value="I2C_"/>
@@ -16,13 +23,6 @@
 			<item value="RS_BIT"/>
 			<item value="ubicar"/>
 			<item value="posi"/>
-			<item value="displayCharPositionWrite"/>
-			<item value="clear"/>
-			<item value="MX_I2C1_Init"/>
-			<item value="I2c"/>
-			<item value="luz_de"/>
-			<item value="HAL_Delay"/>
-			<item value="HAL"/>
 		</list>
 		<list key="replacehistory">
 			<item value="esperar"/>

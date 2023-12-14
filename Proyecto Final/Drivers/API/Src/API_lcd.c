@@ -16,31 +16,19 @@
 #define LCD_FILAS     2 // filas del LCD
 #define LCD_COLUMNAS 16 // columnas del LCD
 
-#define LCD_PIN_RS  4
-#define LCD_PIN_RW  5
-#define LCD_PIN_EN  6
-#define LCD_PIN_D0  7
-#define LCD_PIN_D1  8
-#define LCD_PIN_D2  9
-#define LCD_PIN_D3 10
-#define LCD_PIN_D4 11
-#define LCD_PIN_D5 12
-#define LCD_PIN_D6 13
-#define LCD_PIN_D7 14
-
-#define RS_BIT 0 // Register select bit
-#define EN_BIT 2 // Enable bit
-#define BL_BIT 3 // luz de fondo bit
-#define D4_BIT 4 // Datos 4 bit
-#define D5_BIT 5 // Datos 5 bit
-#define D6_BIT 6 // Datos 6 bit
-#define D7_BIT 7 // Datos 7 bit
+#define LCD_RS_BIT 0 // Register select bit
+#define LCD_EN_BIT 2 // Enable bit
+#define LCD_BL_BIT 3 // luz de fondo bit
+#define LCD_D4_BIT 4 // Datos 4 bit
+#define LCD_D5_BIT 5 // Datos 5 bit
+#define LCD_D6_BIT 6 // Datos 6 bit
+#define LCD_D7_BIT 7 // Datos 7 bit
 
 #define LCD_COMANDO 0         // se transmite un comando
 #define LCD_DATOS   1         // se transmite datos
 
-#define LCD_CMD_LIMPIAR          0b00000001 // Limpiar la pantalla
-#define LCD_CMD_DDRAM_DIRECCION  0b10000000 // Posicionamiento del cursor
+#define LCD_CMD_LIMPIAR           0b00000001 // Limpiar la pantalla
+#define LCD_CMD_DDRAM_DIRECCION   0b10000000 // Posicionamiento del cursor
 
 // USados en el inicio del lcd (no se usan todas las funcionalidades en este release)
 #define LCD_CMD_INICIO_SET1       0x03
@@ -50,19 +38,25 @@
 #define LCD_CMD_INICIO06          0x06
 #define LCD_CMD_INICIO01          0x01
 
-#define LCD_LINEA_1_DIRECCION 0x00 // Direccion de primera linea del lcd
-#define LCD_LINEA_2_DIRECCION 0x40 // Direccion de segunda linea del lcd
+#define LCD_LINEA_1_DIRECCION     0x00 // Direccion de primera linea del lcd
+#define LCD_LINEA_2_DIRECCION     0x40 // Direccion de segunda linea del lcd
 
-#define LCD_TIEMPO_ESPERA 100 // tiempo de espera
-#define LCD_LARGO_VALORES 1   // largo de valores a transmitir
+#define LCD_TIEMPO_ESPERA       100 // tiempo de espera
+#define LCD_LARGO_VALORES       1   // largo de valores a transmitir
 
+// constantes para definir estado de luz de fondo
 #define LCD_LUZ_FONDO_ENCENDIDA 1
 #define LCD_LUZ_FONDO_APAGADA   0
 
 // constantes de espera
-#define LCD_ESPERAR_50 50
-#define LCD_ESPERAR_1  1
-#define LCD_ESPERAR_5  5
+#define LCD_ESPERAR_50          50
+#define LCD_ESPERAR_1           1
+#define LCD_ESPERAR_5           5
+
+// constantes de desplazamiento de datos y manejo de bits
+#define LCD_DESPLAZAR_1         1
+#define LCD_DESPLAZAR_4         4
+#define LCD_VALOR_BINARIO_1111  0x0F
 
 
 /* ----------------------------- Variables privadas ----------------------------- */
@@ -141,13 +135,13 @@ void lcd_luz_fondo(bool estado) {
 /* ------------------------------ Funciones privadas ---------------------------- */
 
 static void lcd_escribir_nibble(uint8_t valor, uint8_t modo) {
-	uint8_t dato = valor << D4_BIT;
-	dato |= modo << RS_BIT;
-	dato |= estado_luz_fondo << BL_BIT;
-	dato |= 1 << EN_BIT;
+	uint8_t dato = valor << LCD_D4_BIT;
+	dato |= modo << LCD_RS_BIT;
+	dato |= estado_luz_fondo << LCD_BL_BIT;
+	dato |= LCD_DESPLAZAR_1 << LCD_EN_BIT;
 	I2C_transmitir(LCD_DIRECCION, &dato, LCD_LARGO_VALORES, LCD_TIEMPO_ESPERA);
 	esperar(LCD_ESPERAR_1);
-	dato &= ~(1 << EN_BIT);
+	dato &= ~(LCD_DESPLAZAR_1 << LCD_EN_BIT);
 	I2C_transmitir(LCD_DIRECCION, &dato, LCD_LARGO_VALORES, LCD_TIEMPO_ESPERA);
 }
 
@@ -155,8 +149,8 @@ static void lcd_escribir_codigo(uint8_t comando, uint8_t modo) {
 	if (modo != LCD_COMANDO && modo != LCD_DATOS) {
 		manejar_errores();
 	}
-	uint8_t upper_nibble = comando >> 4;
-	uint8_t lower_nibble = comando & 0x0F;
+	uint8_t upper_nibble = comando >> LCD_DESPLAZAR_4;
+	uint8_t lower_nibble = comando & LCD_VALOR_BINARIO_1111;
 	lcd_escribir_nibble(upper_nibble, modo);
 	lcd_escribir_nibble(lower_nibble, modo);
 }

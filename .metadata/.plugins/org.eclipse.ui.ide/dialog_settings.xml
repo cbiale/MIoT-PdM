@@ -19,6 +19,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="/home/cbiale/Escritorio/UBA/maestria/materias/PMC/varios/para_tpfinal/PdM-tp_DT"/>
 			<item value="/home/cbiale/Escritorio/UBA/maestria/materias/PMC/correcciones/PDM_Practica5"/>
 			<item value="/home/cbiale/Escritorio/UBA/maestria/materias/PMC/correcciones/PdM_Working/Clase04"/>
 			<item value="/home/cbiale/Escritorio/UBA/maestria/materias/PMC/correcciones/PdM_Working/Clase4_Parte1"/>

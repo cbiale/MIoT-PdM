@@ -1,6 +1,0 @@
-../Drivers/API/Src/API_sensor_fake.c:78:6:sensor_fake_iniciar	1
-../Drivers/API/Src/API_sensor_fake.c:87:6:sensor_fake_actualizar	5
-../Drivers/API/Src/API_sensor_fake.c:111:7:sensor_fake_obtener_temperatura	1
-../Drivers/API/Src/API_sensor_fake.c:117:7:sensor_fake_obtener_humedad	1
-../Drivers/API/Src/API_sensor_fake.c:122:9:sensor_fake_nueva_lectura	1
-../Drivers/API/Src/API_sensor_fake.c:137:13:sensor_fake_realizar_lectura	2

@@ -1,7 +1,0 @@
-../Drivers/API/Src/API_interfaz.c:54:6:interfaz_iniciar	1
-../Drivers/API/Src/API_interfaz.c:69:6:interfaz_actualizar	5
-../Drivers/API/Src/API_interfaz.c:108:13:mostrar_datos	5
-../Drivers/API/Src/API_interfaz.c:136:13:mostrar_datos_lcd	3
-../Drivers/API/Src/API_interfaz.c:162:13:mostrar_datos_uart	1
-../Drivers/API/Src/API_interfaz.c:177:13:iniciar_mostrar_datos	1
-../Drivers/API/Src/API_interfaz.c:194:13:descansar	1
