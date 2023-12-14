@@ -1,0 +1,19 @@
+22:18:34 **** Incremental Build of configuration Debug for project Proyecto Final ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/API/Src/API_debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F439xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Proyecto Final/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_debounce.d" -MT"Drivers/API/Src/API_debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_debounce.o"
+arm-none-eabi-gcc "../Drivers/API/Src/API_interfaz.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F439xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Proyecto Final/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_interfaz.d" -MT"Drivers/API/Src/API_interfaz.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_interfaz.o"
+arm-none-eabi-gcc "../Drivers/API/Src/API_sistema.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F439xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Proyecto Final/Drivers/API/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/API/Src/API_sistema.d" -MT"Drivers/API/Src/API_sistema.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/Src/API_sistema.o"
+arm-none-eabi-gcc -o "Proyecto Final.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/cbiale/Escritorio/UBA/maestria/materias/PMC/MIoT-PdM/Proyecto Final/STM32F439ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Proyecto Final.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Proyecto Final.elf
+ 
+arm-none-eabi-size   Proyecto\ Final.elf 
+arm-none-eabi-objdump -h -S  Proyecto\ Final.elf  > "Proyecto Final.list"
+   text	   data	    bss	    dec	    hex	filename
+  41492	    532	   4124	  46148	   b444	Proyecto Final.elf
+Finished building: default.size.stdout
+ 
+Finished building: Proyecto Final.list
+ 
+
+22:18:35 Build Finished. 0 errors, 0 warnings. (took 1s.281ms)
+

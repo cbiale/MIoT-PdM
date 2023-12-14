@@ -1,0 +1,93 @@
+/*
+ * M_interfaz.c
+ *
+ *  Created on: Dec 6, 2023
+ *      Author: cbiale
+ */
+
+#include <API_interfaz.h>
+#include "API_lcd.h"
+#include <stdbool.h>
+#include <stdio.h>
+#include "API_debounce.h"
+#include "API_dht22.h"
+
+typedef enum {
+	MOSTRANDO_DATOS,
+	DESCANSO
+} estado_sistema_t;
+
+static estado_sistema_t estado;
+// #include "API_dht22.h"
+
+static void mostrar_datos();
+static void iniciar_mostrar_datos();
+static void descansar();
+
+// inicializa la interfaz de usuario en el estado que muestra datos en el lcd y por la uart
+void interfaz_iniciar() {
+	iniciar_mostrar_datos();
+	estado = MOSTRANDO_DATOS;
+}
+
+// actualiza la interfaz de usuario
+void interfaz_actualizar() {
+	switch (estado) {
+	case MOSTRANDO_DATOS:
+		if (readKey()) {
+			estado = DESCANSO;
+			descansar();
+		} else {
+			mostrar_datos();
+		}
+		break;
+	case DESCANSO:
+		if (readKey()) {
+			estado = MOSTRANDO_DATOS;
+			iniciar_mostrar_datos();
+		}
+		break;
+	default:
+		estado = DESCANSO;
+	}
+}
+
+
+static void mostrar_datos() {
+	char cadena[100];
+	float temperatura = dht_obtener_temperatura();
+	float humedad = dht_obtener_humedad();
+	lcd_ubicar(0, 2);
+	if (-1 == temperatura) {
+		sprintf(cadena, "s/d");
+	} else {
+		sprintf(cadena, "%2.2f", temperatura);
+	}
+	lcd_escribir_string(cadena);
+	lcd_ubicar(1, 2);
+	if (-1 == humedad) {
+		sprintf(cadena, "s/d");
+	} else {
+		sprintf(cadena, "%2.2f", humedad);
+	}
+	lcd_escribir_string(cadena);
+}
+
+static void iniciar_mostrar_datos () {
+	lcd_limpiar();
+	lcd_luz_fondo(true);
+	lcd_ubicar(0, 0);
+	lcd_escribir_string("T: ");
+	lcd_ubicar(1, 0);
+	lcd_escribir_string("H: ");
+}
+
+static void descansar() {
+	lcd_limpiar();
+	lcd_luz_fondo(true);
+	lcd_ubicar(0,0);
+	lcd_escribir_string("Descansando");
+	lcd_ubicar(1,0);
+	lcd_escribir_string("Datos por UART");
+
+}

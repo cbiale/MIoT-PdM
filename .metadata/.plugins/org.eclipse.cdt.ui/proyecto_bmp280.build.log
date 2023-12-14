@@ -1,0 +1,288 @@
+09:58:50 **** Build of configuration Debug for project proyecto_bmp280 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f429zitx.d" -MT"Core/Startup/startup_stm32f429zitx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f429zitx.o" "../Core/Startup/startup_stm32f429zitx.s"
+arm-none-eabi-gcc "../Core/Src/bmp280.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/bmp280.d" -MT"Core/Src/bmp280.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/bmp280.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+In file included from ../Core/Src/bmp280.c:12:
+../Core/Src/bmp280.h:5:10: fatal error: i2c.h: No such file or directory
+    5 | #include "i2c.h"
+      |          ^~~~~~~
+compilation terminated.
+make: *** [Core/Src/subdir.mk:37: Core/Src/bmp280.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/main.c:2:8: error: unknown type name 'uint32_t'
+    2 | static uint32_t i, j, k;
+      |        ^~~~~~~~
+../Core/Src/main.c:5:1: error: unknown type name 'int32_t'
+    5 | int32_t UT, UP;
+      | ^~~~~~~
+../Core/Src/main.c:1:1: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+  +++ |+#include <stdint.h>
+    1 | // Common variables
+../Core/Src/main.c:8:1: error: unknown type name 'int32_t'
+    8 | int32_t temperature;
+      | ^~~~~~~
+../Core/Src/main.c:8:1: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Core/Src/main.c:9:1: error: unknown type name 'uint32_t'
+    9 | uint32_t pressure;
+      | ^~~~~~~~
+../Core/Src/main.c:9:1: note: 'uint32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Core/Src/main.c: In function 'nucleo_blink_error':
+../Core/Src/main.c:22:17: warning: implicit declaration of function 'Delay_ms' [-Wimplicit-function-declaration]
+   22 |                 Delay_ms(100);
+      |                 ^~~~~~~~
+../Core/Src/main.c:23:17: warning: implicit declaration of function 'GPIO_PIN_INVERT' [-Wimplicit-function-declaration]
+   23 |                 GPIO_PIN_INVERT(GPIOA, GPIO_PIN_5);
+      |                 ^~~~~~~~~~~~~~~
+../Core/Src/main.c:23:33: error: 'GPIOA' undeclared (first use in this function)
+   23 |                 GPIO_PIN_INVERT(GPIOA, GPIO_PIN_5);
+      |                                 ^~~~~
+../Core/Src/main.c:23:33: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:23:40: error: 'GPIO_PIN_5' undeclared (first use in this function)
+   23 |                 GPIO_PIN_INVERT(GPIOA, GPIO_PIN_5);
+      |                                        ^~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:30:9: warning: implicit declaration of function 'SetSysClock' [-Wimplicit-function-declaration]
+   30 |         SetSysClock();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:31:9: warning: implicit declaration of function 'SystemCoreClockUpdate' [-Wimplicit-function-declaration]
+   31 |         SystemCoreClockUpdate();
+      |         ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:37:9: warning: implicit declaration of function 'USART2_HandleInit' [-Wimplicit-function-declaration]
+   37 |         USART2_HandleInit();
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:38:9: warning: implicit declaration of function 'RCC_SetClockUSART' [-Wimplicit-function-declaration]
+   38 |         RCC_SetClockUSART(RCC_USART2_CLK_SRC, RCC_PERIPH_CLK_SYSCLK);
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:38:27: error: 'RCC_USART2_CLK_SRC' undeclared (first use in this function)
+   38 |         RCC_SetClockUSART(RCC_USART2_CLK_SRC, RCC_PERIPH_CLK_SYSCLK);
+      |                           ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:38:47: error: 'RCC_PERIPH_CLK_SYSCLK' undeclared (first use in this function)
+   38 |         RCC_SetClockUSART(RCC_USART2_CLK_SRC, RCC_PERIPH_CLK_SYSCLK);
+      |                                               ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:39:9: warning: implicit declaration of function 'USART_Init' [-Wimplicit-function-declaration]
+   39 |         USART_Init(&hUSART2, USART_MODE_TX);
+      |         ^~~~~~~~~~
+../Core/Src/main.c:39:21: error: 'hUSART2' undeclared (first use in this function)
+   39 |         USART_Init(&hUSART2, USART_MODE_TX);
+      |                     ^~~~~~~
+../Core/Src/main.c:39:30: error: 'USART_MODE_TX' undeclared (first use in this function)
+   39 |         USART_Init(&hUSART2, USART_MODE_TX);
+      |                              ^~~~~~~~~~~~~
+../Core/Src/main.c:45:9: warning: implicit declaration of function 'USART_SetOversampling' [-Wimplicit-function-declaration]
+   45 |         USART_SetOversampling(&hUSART2, USART_OVERS16);
+      |         ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:45:41: error: 'USART_OVERS16' undeclared (first use in this function)
+   45 |         USART_SetOversampling(&hUSART2, USART_OVERS16);
+      |                                         ^~~~~~~~~~~~~
+../Core/Src/main.c:46:9: warning: implicit declaration of function 'USART_SetBaudRate' [-Wimplicit-function-declaration]
+   46 |         USART_SetBaudRate(&hUSART2, 256000);
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:47:9: warning: implicit declaration of function 'USART_SetDataMode' [-Wimplicit-function-declaration]
+   47 |         USART_SetDataMode(&hUSART2, USART_DATAWIDTH_8B, USART_PARITY_NONE, USART_STOPBITS_1);
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:47:37: error: 'USART_DATAWIDTH_8B' undeclared (first use in this function)
+   47 |         USART_SetDataMode(&hUSART2, USART_DATAWIDTH_8B, USART_PARITY_NONE, USART_STOPBITS_1);
+      |                                     ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:47:57: error: 'USART_PARITY_NONE' undeclared (first use in this function)
+   47 |         USART_SetDataMode(&hUSART2, USART_DATAWIDTH_8B, USART_PARITY_NONE, USART_STOPBITS_1);
+      |                                                         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:47:76: error: 'USART_STOPBITS_1' undeclared (first use in this function)
+   47 |         USART_SetDataMode(&hUSART2, USART_DATAWIDTH_8B, USART_PARITY_NONE, USART_STOPBITS_1);
+      |                                                                            ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:48:9: warning: implicit declaration of function 'USART_SetHWFlow' [-Wimplicit-function-declaration]
+   48 |         USART_SetHWFlow(&hUSART2, USART_HWCTL_NONE);
+      |         ^~~~~~~~~~~~~~~
+../Core/Src/main.c:48:35: error: 'USART_HWCTL_NONE' undeclared (first use in this function)
+   48 |         USART_SetHWFlow(&hUSART2, USART_HWCTL_NONE);
+      |                                   ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:49:9: warning: implicit declaration of function 'USART_Enable' [-Wimplicit-function-declaration]
+   49 |         USART_Enable(&hUSART2);
+      |         ^~~~~~~~~~~~
+../Core/Src/main.c:50:9: warning: implicit declaration of function 'USART_CheckIdleState' [-Wimplicit-function-declaration]
+   50 |         USART_CheckIdleState(&hUSART2, 0xC5C10); // Timeout of about 100ms at 80MHz CPU
+      |         ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:54:9: warning: implicit declaration of function 'Delay_Init' [-Wimplicit-function-declaration]
+   54 |         Delay_Init();
+      |         ^~~~~~~~~~
+../Core/Src/main.c:59:9: error: 'RCC' undeclared (first use in this function)
+   59 |         RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
+      |         ^~~
+../Core/Src/main.c:59:25: error: 'RCC_AHB2ENR_GPIOAEN' undeclared (first use in this function)
+   59 |         RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
+      |                         ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:61:9: warning: implicit declaration of function 'GPIO_set_mode' [-Wimplicit-function-declaration]
+   61 |         GPIO_set_mode(GPIOA, GPIO_Mode_OUT, GPIO_PUPD_NONE, GPIO_PIN_5);
+      |         ^~~~~~~~~~~~~
+../Core/Src/main.c:61:23: error: 'GPIOA' undeclared (first use in this function)
+   61 |         GPIO_set_mode(GPIOA, GPIO_Mode_OUT, GPIO_PUPD_NONE, GPIO_PIN_5);
+      |                       ^~~~~
+../Core/Src/main.c:61:30: error: 'GPIO_Mode_OUT' undeclared (first use in this function)
+   61 |         GPIO_set_mode(GPIOA, GPIO_Mode_OUT, GPIO_PUPD_NONE, GPIO_PIN_5);
+      |                              ^~~~~~~~~~~~~
+../Core/Src/main.c:61:45: error: 'GPIO_PUPD_NONE' undeclared (first use in this function)
+   61 |         GPIO_set_mode(GPIOA, GPIO_Mode_OUT, GPIO_PUPD_NONE, GPIO_PIN_5);
+      |                                             ^~~~~~~~~~~~~~
+../Core/Src/main.c:61:61: error: 'GPIO_PIN_5' undeclared (first use in this function)
+   61 |         GPIO_set_mode(GPIOA, GPIO_Mode_OUT, GPIO_PUPD_NONE, GPIO_PIN_5);
+      |                                                             ^~~~~~~~~~
+../Core/Src/main.c:62:9: warning: implicit declaration of function 'GPIO_out_cfg' [-Wimplicit-function-declaration]
+   62 |         GPIO_out_cfg(GPIOA, GPIO_OT_PP, GPIO_SPD_LOW, GPIO_PIN_5);
+      |         ^~~~~~~~~~~~
+../Core/Src/main.c:62:29: error: 'GPIO_OT_PP' undeclared (first use in this function)
+   62 |         GPIO_out_cfg(GPIOA, GPIO_OT_PP, GPIO_SPD_LOW, GPIO_PIN_5);
+      |                             ^~~~~~~~~~
+../Core/Src/main.c:62:41: error: 'GPIO_SPD_LOW' undeclared (first use in this function)
+   62 |         GPIO_out_cfg(GPIOA, GPIO_OT_PP, GPIO_SPD_LOW, GPIO_PIN_5);
+      |                                         ^~~~~~~~~~~~
+../Core/Src/main.c:66:9: warning: implicit declaration of function 'RCC_SetClockI2C' [-Wimplicit-function-declaration]
+   66 |         RCC_SetClockI2C(RCC_I2C2_CLK_SRC, RCC_PERIPH_CLK_SYSCLK);
+      |         ^~~~~~~~~~~~~~~
+../Core/Src/main.c:66:25: error: 'RCC_I2C2_CLK_SRC' undeclared (first use in this function)
+   66 |         RCC_SetClockI2C(RCC_I2C2_CLK_SRC, RCC_PERIPH_CLK_SYSCLK);
+      |                         ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:68:9: warning: implicit declaration of function 'I2C_Init' [-Wimplicit-function-declaration]
+   68 |         I2C_Init(I2C2);
+      |         ^~~~~~~~
+../Core/Src/main.c:68:18: error: 'I2C2' undeclared (first use in this function)
+   68 |         I2C_Init(I2C2);
+      |                  ^~~~
+../Core/Src/main.c:70:9: warning: implicit declaration of function 'I2C_ConfigFilters' [-Wimplicit-function-declaration]
+   70 |         I2C_ConfigFilters(I2C2, I2C_AF_ENABLE, 0);
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:70:33: error: 'I2C_AF_ENABLE' undeclared (first use in this function)
+   70 |         I2C_ConfigFilters(I2C2, I2C_AF_ENABLE, 0);
+      |                                 ^~~~~~~~~~~~~
+../Core/Src/main.c:75:9: warning: implicit declaration of function 'I2C_ConfigTiming' [-Wimplicit-function-declaration]
+   75 |         I2C_ConfigTiming(I2C2, 0x00F02B86);
+      |         ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:77:9: warning: implicit declaration of function 'I2C_Enable' [-Wimplicit-function-declaration]
+   77 |         I2C_Enable(I2C2);
+      |         ^~~~~~~~~~
+../Core/Src/main.c:98:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   98 |         printf("BMP280: ");
+      |         ^~~~~~
+../Core/Src/main.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+  +++ |+#include <stdio.h>
+    1 | // Common variables
+../Core/Src/main.c:98:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   98 |         printf("BMP280: ");
+      |         ^~~~~~
+../Core/Src/main.c:98:9: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:99:14: warning: implicit declaration of function 'BMP280_Check' [-Wimplicit-function-declaration]
+   99 |         if (!BMP280_Check()) {
+      |              ^~~~~~~~~~~~
+../Core/Src/main.c:104:31: warning: implicit declaration of function 'BMP280_GetVersion' [-Wimplicit-function-declaration]
+  104 |         printf("ID=%02X\r\n", BMP280_GetVersion());
+      |                               ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:107:13: warning: implicit declaration of function 'BMP280_GetMode' [-Wimplicit-function-declaration]
+  107 |         i = BMP280_GetMode();
+      |             ^~~~~~~~~~~~~~
+../Core/Src/main.c:110:22: error: 'BMP280_MODE_SLEEP' undeclared (first use in this function)
+  110 |                 case BMP280_MODE_SLEEP:
+      |                      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:113:22: error: 'BMP280_MODE_FORCED' undeclared (first use in this function)
+  113 |                 case BMP280_MODE_FORCED:
+      |                      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:114:22: error: 'BMP280_MODE_FORCED2' undeclared (first use in this function)
+  114 |                 case BMP280_MODE_FORCED2:
+      |                      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:124:9: warning: implicit declaration of function 'BMP280_Reset' [-Wimplicit-function-declaration]
+  124 |         BMP280_Reset();
+      |         ^~~~~~~~~~~~
+../Core/Src/main.c:137:17: warning: implicit declaration of function 'BMP280_GetStatus' [-Wimplicit-function-declaration]
+  137 |         while ((BMP280_GetStatus() & BMP280_STATUS_IM_UPDATE) && --i) {
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:137:38: error: 'BMP280_STATUS_IM_UPDATE' undeclared (first use in this function)
+  137 |         while ((BMP280_GetStatus() & BMP280_STATUS_IM_UPDATE) && --i) {
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:17: warning: implicit declaration of function 'USART_SendChar' [-Wimplicit-function-declaration]
+  138 |                 USART_SendChar(USART2, '.');
+      |                 ^~~~~~~~~~~~~~
+../Core/Src/main.c:138:32: error: 'USART2' undeclared (first use in this function)
+  138 |                 USART_SendChar(USART2, '.');
+      |                                ^~~~~~
+../Core/Src/main.c:152:13: warning: implicit declaration of function 'BMP280_Read_Calibration' [-Wimplicit-function-declaration]
+  152 |         i = BMP280_Read_Calibration();
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:153:42: error: 'BMP280_SUCCESS' undeclared (first use in this function)
+  153 |         printf("[%02X] %s\r\n", i, (i == BMP280_SUCCESS) ? "OK" : "FAIL");
+      |                                          ^~~~~~~~~~~~~~
+../Core/Src/main.c:164:9: warning: implicit declaration of function 'BMP280_SetStandby' [-Wimplicit-function-declaration]
+  164 |         BMP280_SetStandby(BMP280_STBY_1s);
+      |         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:164:27: error: 'BMP280_STBY_1s' undeclared (first use in this function)
+  164 |         BMP280_SetStandby(BMP280_STBY_1s);
+      |                           ^~~~~~~~~~~~~~
+../Core/Src/main.c:167:9: warning: implicit declaration of function 'BMP280_SetFilter' [-Wimplicit-function-declaration]
+  167 |         BMP280_SetFilter(BMP280_FILTER_16);
+      |         ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:167:26: error: 'BMP280_FILTER_16' undeclared (first use in this function)
+  167 |         BMP280_SetFilter(BMP280_FILTER_16);
+      |                          ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:170:9: warning: implicit declaration of function 'BMP280_SetOSRST' [-Wimplicit-function-declaration]
+  170 |         BMP280_SetOSRST(BMP280_OSRS_T_x2);
+      |         ^~~~~~~~~~~~~~~
+../Core/Src/main.c:170:25: error: 'BMP280_OSRS_T_x2' undeclared (first use in this function)
+  170 |         BMP280_SetOSRST(BMP280_OSRS_T_x2);
+      |                         ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:173:9: warning: implicit declaration of function 'BMP280_SetOSRSP' [-Wimplicit-function-declaration]
+  173 |         BMP280_SetOSRSP(BMP280_OSRS_P_x16);
+      |         ^~~~~~~~~~~~~~~
+../Core/Src/main.c:173:25: error: 'BMP280_OSRS_P_x16' undeclared (first use in this function)
+  173 |         BMP280_SetOSRSP(BMP280_OSRS_P_x16);
+      |                         ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:176:9: warning: implicit declaration of function 'BMP280_SetMode' [-Wimplicit-function-declaration]
+  176 |         BMP280_SetMode(BMP280_MODE_NORMAL);
+      |         ^~~~~~~~~~~~~~
+../Core/Src/main.c:176:24: error: 'BMP280_MODE_NORMAL' undeclared (first use in this function)
+  176 |         BMP280_SetMode(BMP280_MODE_NORMAL);
+      |                        ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:200:38: error: 'BMP280_STATUS_MEASURING' undeclared (first use in this function)
+  200 |                                 (i & BMP280_STATUS_MEASURING) ? "MEASURING" : "READY",
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:205:21: warning: implicit declaration of function 'BMP280_Read_UTP' [-Wimplicit-function-declaration]
+  205 |                 i = BMP280_Read_UTP(&UT, &UP);
+      |                     ^~~~~~~~~~~~~~~
+../Core/Src/main.c:220:39: warning: implicit declaration of function 'BMP280_CalcT' [-Wimplicit-function-declaration]
+  220 |                         temperature = BMP280_CalcT(UT);
+      |                                       ^~~~~~~~~~~~
+../Core/Src/main.c:234:44: warning: implicit declaration of function 'BMP280_CalcP' [-Wimplicit-function-declaration]
+  234 |                                 pressure = BMP280_CalcP(UP);
+      |                                            ^~~~~~~~~~~~
+../Core/Src/main.c:241:49: warning: implicit declaration of function 'BMP280_Pa_to_mmHg' [-Wimplicit-function-declaration]
+  241 |                                                 BMP280_Pa_to_mmHg(pressure)
+      |                                                 ^~~~~~~~~~~~~~~~~
+At top level:
+../Core/Src/main.c:2:23: warning: 'k' defined but not used [-Wunused-variable]
+    2 | static uint32_t i, j, k;
+      |                       ^
+../Core/Src/main.c:2:20: warning: 'j' defined but not used [-Wunused-variable]
+    2 | static uint32_t i, j, k;
+      |                    ^
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+09:58:52 Build Failed. 42 errors, 41 warnings. (took 2s.486ms)
+

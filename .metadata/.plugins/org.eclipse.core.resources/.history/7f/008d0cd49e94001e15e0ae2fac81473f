@@ -1,0 +1,19 @@
+/*
+ * API_dht22.h
+ *
+ *  Created on: Dec 3, 2023
+ *      Author: cbiale
+ */
+
+#ifndef API_INC_API_DHT22_H_
+#define API_INC_API_DHT22_H_
+
+
+typedef struct {
+	float Temperatura;
+	float humedad;
+} dht_datos_t;
+
+void dht_obtener_datos (dht_datos_t * datos);
+
+#endif /* API_INC_API_DHT22_H_ */

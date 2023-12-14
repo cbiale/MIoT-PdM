@@ -1,0 +1,55 @@
+/*
+ * API_bmp280.h
+ *
+ *  Archivo que define las funciones que manejan el sensor BMP280.
+ *
+ *  Created on: Dec 4, 2023
+ *      Author: cbiale
+ */
+
+#ifndef API_INC_API_BMP280_H_
+#define API_INC_API_BMP280_H_
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <port.h>
+
+
+/**
+ * @brief Obtiene los datos del sensor BMP280 y deja disponible los valores obtenidos.
+ *
+ * Realiza las operaciones necesarias para obtener los datos del sensor BMP280 y
+ * actualiza las variables que contienen los datos de temperatura y presión.
+ *
+ * @return void
+ */
+void bmp_actualizar ();
+
+/**
+ * @brief Obtiene la temperatura actual desde el sensor BMP280.
+ *
+ * Retorna la temperatura actual medida por el sensor BMP280.
+ *
+ * @return Temperatura actual en grados Celsius (float).
+ */
+float bmp_obtener_temperatura();
+
+/**
+ * @brief Obtiene la presión actual desde el sensor BMP280.
+ *
+ * Retorna la presión actual medida por el sensor BMP280.
+ *
+ * @return Presión actual.
+ */
+float bmp_obtener_presion();
+
+/**
+ * @brief Obtiene la secuencia de lectura del sensor BMP280.
+ *
+ * Retorna la secuencia de lectura del sensor BMP280, se usa para controlar si hay una nueva lectura.
+ *
+ * @return Secuencia de lectura actual.
+ */
+uint8_t bmp_nueva_lectura();
+
+#endif /* API_INC_API_BMP280_H_ */

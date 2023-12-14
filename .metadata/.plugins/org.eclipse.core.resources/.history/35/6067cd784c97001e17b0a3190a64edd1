@@ -1,0 +1,91 @@
+#include "API_sensor_fake.h"
+
+/* ------------------------------- tipos de datos ------------------------------- */
+
+typedef enum {
+	ESPERA,
+	LECTURA
+} estado_sensor_fake_t;
+
+/* --------------------------------- Constantes --------------------------------- */
+
+#define SENSOR_FAKE_CANTIDAD_LECTURAS 5
+#define CANTIDAD_LECTURAS 7
+/* ----------------------------- Variables privadas ----------------------------- */
+
+// estado inicial
+static estado_sensor_fake_t estado = LECTURA;
+// delay usado para espaciar lecturas
+static delay_t espera;
+// valores fake de temperatura y humedad
+static float valores_temperatura[CANTIDAD_LECTURAS] = {33.3, 33.0, 29.8, 29.7, 29.9, 31.5, 32.3};
+static float valores_humedad[CANTIDAD_LECTURAS] = {70, 69.5, 67.7, 67.5, 67.7, 70.5, 71};
+
+// -1 significa sin datos
+static float humedad = -1; // valor obtenido de humedad
+static float temperatura = -1; // valor obtenido de temperatura
+
+static uint8_t nueva_lectura = -1; // determina si existe una nueva lectura
+static uint8_t siguiente_valor = -1; // siguiente valor de lectura a mostrar
+
+/* ---------------------- Prototipos de funciones privadas ---------------------- */
+
+static void sensor_fake_realizar_lectura();
+
+/* ---------------------------------- Funciones --------------------------------- */
+
+// inicia el sensor fake (no realiza nada, es a efectos de homogeneizar)
+void sensor_fake_iniciar() {
+	siguiente_valor = -1;
+}
+
+
+// actualiza el estado del sensor_fake
+void sensor_fake_actualizar() {
+	switch (estado) {
+	case LECTURA:
+		sensor_fake_realizar_lectura();
+		estado = ESPERA;
+		delayInit(&espera, 3000);
+		if (nueva_lectura < SENSOR_FAKE_CANTIDAD_LECTURAS) {
+			nueva_lectura++;
+		} else {
+			nueva_lectura = 0;
+		}
+		break;
+	case ESPERA:
+		if (delayRead(&espera)) {
+			estado = LECTURA;
+		}
+		break;
+	default:
+		estado = ESPERA;
+	}
+}
+
+// obtiene de forma externa el valor de temperatura
+float sensor_fake_obtener_temperatura () {
+	return temperatura;
+}
+
+// obtiene de forma externa el valor de humedad
+float sensor_fake_obtener_humedad() {
+	return humedad;
+}
+
+// retorna si ha realizado una nueva lectura
+uint8_t sensor_fake_nueva_lectura() {
+	return nueva_lectura;
+}
+
+/* ------------------------------ Funciones privadas ---------------------------- */
+
+static void sensor_fake_realizar_lectura() {
+	if (siguiente_valor < CANTIDAD_LECTURAS - 1) {
+		siguiente_valor++;
+	} else {
+		siguiente_valor = 0;
+	}
+	temperatura = valores_temperatura[siguiente_valor];
+	humedad = valores_humedad[siguiente_valor];
+}

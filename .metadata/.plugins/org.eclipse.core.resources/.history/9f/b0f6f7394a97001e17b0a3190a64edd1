@@ -1,0 +1,148 @@
+/*
+ * M_interfaz.c
+ *
+ *  Created on: Dec 6, 2023
+ *      Author: cbiale
+ */
+
+#include <API_interfaz.h>
+
+/* ------------------------------- tipos de datos ------------------------------- */
+
+typedef enum {
+	MOSTRANDO_DATOS,
+	DESCANSO
+} estado_sistema_t;
+
+/* --------------------------------- Constantes --------------------------------- */
+
+#define SIN_DATOS -1
+
+/* ----------------------------- Variables privadas ----------------------------- */
+
+static estado_sistema_t estado;
+static uint8_t lectura_anterior = 0;
+static float temperatura;
+static float humedad;
+
+/* ---------------------- Prototipos de funciones privadas ---------------------- */
+
+static void iniciar_mostrar_datos();
+static void mostrar_datos(bool lcd, bool uart, bool forzar);
+static void mostrar_datos_lcd();
+static void mostrar_datos_uart();
+static void descansar();
+
+/* ---------------------------------- Funciones --------------------------------- */
+
+// inicializa la interfaz de usuario en el estado que muestra datos en el lcd y por la uart
+void interfaz_iniciar() {
+	iniciar_mostrar_datos();
+	estado = MOSTRANDO_DATOS;
+}
+
+/* Actualiza la interfaz de usuario
+ *
+ *  En el estado MOSTRANDO_DATOS se visualizan los valores de temperatura y humedad
+ *  en el lcd y se pasan datos por la UART.
+ *  En el estado DESCANSO solo se pasan datos por la UART.
+ *
+ *  El cambio de estados se produce al pulsar el boton USER de la placa.
+ *
+ */
+void interfaz_actualizar() {
+	switch (estado) {
+	case MOSTRANDO_DATOS:
+		if (readKey()) {
+			estado = DESCANSO;
+			descansar();
+		} else {
+			mostrar_datos(true, true, false);
+		}
+		break;
+	case DESCANSO:
+		if (readKey()) {
+			estado = MOSTRANDO_DATOS;
+			iniciar_mostrar_datos();
+			mostrar_datos(true, false, true);
+		} else {
+			mostrar_datos(false, true, false);
+		}
+		break;
+	default:
+		estado = DESCANSO;
+	}
+}
+
+/* ------------------------------ Funciones privadas ---------------------------- */
+
+/* Muestra los datos actualizados.
+ * Los argumentos determinan:
+ * - Mostrar por lcd (true o false).
+ * - Mostrar por uart (true o false).
+ * - Forzar lectura(true o false), que inicialmente se usa para mostrar los datos en
+ *   el lcd al volver del estado DESCANSO.
+ */
+static void mostrar_datos(bool mostrar_lcd, bool mostrar_uart, bool forzar_lectura) {
+	// verifica si hay una nueva lectura
+	uint8_t nueva_lectura = sensor_fake_nueva_lectura();
+	// si hay una nueva lectura o forzar en true
+	if (nueva_lectura != lectura_anterior || forzar_lectura) {
+		lectura_anterior = nueva_lectura;
+		temperatura = sensor_fake_obtener_temperatura();
+		humedad = sensor_fake_obtener_humedad();
+		if (mostrar_lcd) {
+			mostrar_datos_lcd();
+		}
+		if (mostrar_uart) {
+			mostrar_datos_uart();
+		}
+	}
+}
+
+// muestra los datos en el lcd
+static void mostrar_datos_lcd() {
+	char cadena[100];
+
+	lcd_ubicar(0, 2);
+	if (SIN_DATOS == temperatura) {
+		sprintf(cadena, "s/d           ");
+	} else {
+		sprintf(cadena, "%2.2f         ", temperatura);
+	}
+	lcd_escribir_string(cadena);
+	lcd_ubicar(1, 2);
+	if (SIN_DATOS == humedad) {
+		sprintf(cadena, "s/d           ");
+	} else {
+		sprintf(cadena, "%2.2f         ", humedad);
+	}
+	lcd_escribir_string(cadena);
+}
+
+// envia los datos por la uart
+static void mostrar_datos_uart() {
+	char cadena[100];
+	sprintf(cadena, "Temperatura: %2.2f Humedad: %2.2f\r\n", temperatura, humedad);
+	uart_enviar_string((uint8_t *) cadena);
+}
+
+// muestra los datos iniciales en el lcd en el estado MOSTRANDO_DATOS
+static void iniciar_mostrar_datos () {
+	lcd_limpiar();
+	lcd_luz_fondo(true);
+	lcd_ubicar(0, 0);
+	lcd_escribir_string("T: ");
+	lcd_ubicar(1, 0);
+	lcd_escribir_string("H: ");
+}
+
+// muestra los datos que se visualizan en el lcd en el estado DESCANSAR
+static void descansar() {
+	lcd_limpiar();
+	lcd_luz_fondo(true);
+	lcd_ubicar(0,0);
+	lcd_escribir_string("Descansando");
+	lcd_ubicar(1,0);
+	lcd_escribir_string("Datos por UART");
+}

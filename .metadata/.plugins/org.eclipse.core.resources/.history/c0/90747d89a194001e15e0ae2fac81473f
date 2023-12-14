@@ -1,0 +1,121 @@
+#include "API_dht22.h"
+
+#define DHT_PUERTO GPIOA
+#define DHT_PIN    GPIO_PIN_1
+#define PIN_BAJO   0
+#define PIN_ALTO   1
+
+uint32_t DWT_Delay_Init(void) {
+	// se deshabilita TRC
+	CoreDebug->DEMCR &= ~CoreDebug_DEMCR_TRCENA_Msk; // ~0x01000000;
+	// se habilita TRC
+	CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk; // 0x01000000;
+
+	// desabilita el clock cycle counter
+	DWT->CTRL &= ~DWT_CTRL_CYCCNTENA_Msk; //~0x00000001;
+	// habilita clock cycle counter
+	DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk; //0x00000001;
+	// resetea el valor del clock cycle counter
+	DWT->CYCCNT = 0;
+
+	__ASM
+	volatile ("NOP");
+	__ASM
+	volatile ("NOP");
+	__ASM
+	volatile ("NOP");
+
+	// controla si el clock cycle counter se ha iniciado
+	if (DWT->CYCCNT) {
+		return 0; // Si!!
+	} else {
+		return 1; // No iniciado
+	}
+}
+
+void esperar_ms (uint32_t microsegudos) {
+	uint32_t clk_cycle_start = DWT->CYCCNT;
+	microsegudos *= (HAL_RCC_GetHCLKFreq() / 1000000);
+	while ((DWT->CYCCNT - clk_cycle_start) < microsegudos) {
+	}
+}
+
+void Set_Pin_Output(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	GPIO_InitTypeDef gpio_estructura_inicio = { 0 };
+	gpio_estructura_inicio.Pin = GPIO_Pin;
+	gpio_estructura_inicio.Mode = GPIO_MODE_OUTPUT_PP;
+	gpio_estructura_inicio.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOx, &gpio_estructura_inicio);
+}
+
+void Set_Pin_Input(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+	GPIO_InitTypeDef gpio_estructura_inicio = { 0 };
+	gpio_estructura_inicio.Pin = GPIO_Pin;
+	gpio_estructura_inicio.Mode = GPIO_MODE_INPUT;
+	gpio_estructura_inicio.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOx, &gpio_estructura_inicio);
+}
+
+
+// inicia el dht22
+static void dht_iniciar(void) {
+	DWT_Delay_Init();
+	Set_Pin_Output(DHT_PUERTO, DHT_PIN);
+	HAL_GPIO_WritePin(DHT_PUERTO, DHT_PIN, PIN_BAJO);
+	delay(1200);
+	HAL_GPIO_WritePin(DHT_PUERTO, DHT_PIN, PIN_ALTO);
+	delay(20);   // wait for 30us
+	Set_Pin_Input(DHT_PUERTO, DHT_PIN);
+}
+
+static uint8_t dht_controlar_respuesta (void) {
+	uint8_t respuesta = 0;
+	delay(40);
+	if (!(HAL_GPIO_ReadPin(DHT_PUERTO, DHT_PIN))) {
+		delay(80);
+		if ((HAL_GPIO_ReadPin(DHT_PUERTO, DHT_PIN)))
+			respuesta = 1;
+		else
+			respuesta = -1;
+	}
+	while ((HAL_GPIO_ReadPin(DHT_PUERTO, DHT_PIN))) {} // espera un pin bajo
+	return respuesta;
+}
+
+static uint8_t dht_leer(void) {
+	uint8_t i, j;
+	for (j = 0; j < 8; j++) {
+		while (!(HAL_GPIO_ReadPin(DHT_PUERTO, DHT_PIN)))
+			;   // wait for the pin to go high
+		delay(40);   // wait for 40 us
+		if (!(HAL_GPIO_ReadPin(DHT_PUERTO, DHT_PIN)))   // if the pin is low
+		{
+			i &= ~(1 << (7 - j));   // write 0
+		} else
+			i |= (1 << (7 - j));  // if the pin is high, write 1
+		while ((HAL_GPIO_ReadPin(DHT_PORT, DHT_PIN)))
+			;  // wait for the pin to go low
+	}
+	return i;
+}
+
+void dht_obtener_datos(float temperatura, float humedad) {
+
+	uint8_T verificar, temperatura_byte1, temperatura_byte2, humedad_byte1, humedad_byte2;
+	uint16_t suma_control;
+
+	dht_iniciar();
+	verificar = dht_obtener_respuesta();
+	humedad_byte1 = dht_leer();
+	humedad_byte2 = dht_leer();
+	temperatura_byte1 = dht_leer();
+	temperatura_byte2 = dht_leer();
+	suma_control = dht_leer();
+
+	if (suma_control
+			== (humedad_byte1 + humedad_byte2 + temperatura_byte1
+					+ temperatura_byte2)) {
+		humedad = ((humedad_byte1 << 8) | humedad_byte2);
+		temperatura = ((temperatura_byte1 << 8) | temperatura_byte2);
+	}
+}

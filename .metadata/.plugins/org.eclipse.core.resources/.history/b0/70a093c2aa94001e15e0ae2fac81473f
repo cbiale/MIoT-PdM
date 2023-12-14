@@ -1,0 +1,109 @@
+#include "API_dht22.h"
+
+#define DHT_PUERTO GPIOA
+#define DHT_PIN    GPIO_PIN_1
+#define PIN_BAJO   0
+#define PIN_ALTO   1
+
+typedef enum {
+	ESPERA,
+	LECTURA
+} estado_dht22_t;
+
+static estado_dht22_t estado = LECTURA;
+static delay_t espera;
+
+// -1 significa sin datos
+static float humedad = -1, temperatura = -1;
+
+// inicia el dht22
+static void dht_iniciar(void) {
+	DWT_Delay_Init();
+	Set_Pin_Output(DHT_PUERTO, DHT_PIN);
+	escribir_pin(DHT_PUERTO, DHT_PIN, PIN_BAJO);
+	esperar_ms(1200);
+	escribir_pin(DHT_PUERTO, DHT_PIN, PIN_ALTO);
+	esperar_ms(20);
+	Set_Pin_Input(DHT_PUERTO, DHT_PIN);
+}
+
+static uint8_t dht_obtener_respuesta (void) {
+	uint8_t respuesta = 0;
+	esperar_ms(40);
+	if (!(leer_pin(DHT_PUERTO, DHT_PIN))) {
+		esperar_ms(80);
+		if ((leer_pin(DHT_PUERTO, DHT_PIN)))
+			respuesta = 1;
+		else
+			respuesta = -1;
+	}
+	while ((leer_pin(DHT_PUERTO, DHT_PIN))) {} // espera que el pin sea bajo
+	return respuesta;
+}
+
+static uint8_t dht_leer(void) {
+	uint8_t i, j;
+	for (j = 0; j < 8; j++) {
+		while (!(leer_pin(DHT_PUERTO, DHT_PIN))) {
+			// espera que el pin sea alto
+		}
+		esperar_ms(40);
+		// si el pin es bajo
+		if (!(leer_pin(DHT_PUERTO, DHT_PIN))) {
+			i &= ~(1 << (7 - j));   // escribe un 0
+		} else {
+			i |= (1 << (7 - j));  // escribe un 1
+		}
+		while ((leer_pin(DHT_PUERTO, DHT_PIN))) {
+			// espera que el pin sea bajo
+		}
+	}
+	return i;
+}
+
+static void dht_realizar_lectura () {
+	uint8_t verificar, temperatura_byte1, temperatura_byte2, humedad_byte1, humedad_byte2;
+	uint16_t suma_control;
+
+	dht_iniciar();
+	verificar = dht_obtener_respuesta();
+	humedad_byte1 = dht_leer();
+	humedad_byte2 = dht_leer();
+	temperatura_byte1 = dht_leer();
+	temperatura_byte2 = dht_leer();
+	suma_control = dht_leer();
+
+	if (suma_control
+			== (humedad_byte1 + humedad_byte2 + temperatura_byte1
+					+ temperatura_byte2)) {
+		humedad = ((humedad_byte1 << 8) | humedad_byte2);
+		temperatura = ((temperatura_byte1 << 8) | temperatura_byte2);
+	}
+}
+
+
+void dht_actualizar() {
+
+	switch (estado) {
+	case LECTURA:
+		dht_realizar_lectura();
+		estado = ESPERA;
+		delayInit(&espera, 3000);
+		break;
+	case ESPERA:
+		if (delayRead(&espera)) {
+			estado = LECTURA;
+		}
+		break;
+	default:
+		estado = ESPERA;
+	}
+}
+
+float dht_obtener_temperatura () {
+	return temperatura;
+}
+
+float dht_obtener_humedad() {
+	return humedad;
+}

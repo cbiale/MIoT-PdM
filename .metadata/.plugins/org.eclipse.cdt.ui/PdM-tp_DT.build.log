@@ -1,0 +1,10 @@
+21:50:35 **** Incremental Build of configuration Debug for project PdM-tp_DT ****
+make -j8 all 
+arm-none-eabi-size   PdM-tp_DT.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33276	    492	   2188	  35956	   8c74	PdM-tp_DT.elf
+Finished building: default.size.stdout
+ 
+
+21:50:35 Build Finished. 0 errors, 0 warnings. (took 318ms)
+

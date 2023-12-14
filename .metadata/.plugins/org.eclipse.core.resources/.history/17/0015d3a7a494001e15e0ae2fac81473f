@@ -1,0 +1,75 @@
+#include "API_dht22.h"
+
+#define DHT_PUERTO GPIOA
+#define DHT_PIN    GPIO_PIN_1
+#define PIN_BAJO   0
+#define PIN_ALTO   1
+
+
+
+
+// inicia el dht22
+static void dht_iniciar(void) {
+	DWT_Delay_Init();
+	Set_Pin_Output(DHT_PUERTO, DHT_PIN);
+	escribir_pin(DHT_PUERTO, DHT_PIN, PIN_BAJO);
+	esperar(1200);
+	escribir_pin(DHT_PUERTO, DHT_PIN, PIN_ALTO);
+	esperar(20);   // wait for 30us
+	Set_Pin_Input(DHT_PUERTO, DHT_PIN);
+}
+
+static uint8_t dht_obtener_respuesta (void) {
+	uint8_t respuesta = 0;
+	esperar(40);
+	if (!(leer_pin(DHT_PUERTO, DHT_PIN))) {
+		esperar(80);
+		if ((leer_pin(DHT_PUERTO, DHT_PIN)))
+			respuesta = 1;
+		else
+			respuesta = -1;
+	}
+	while ((leer_pin(DHT_PUERTO, DHT_PIN))) {} // espera que el pin sea bajo
+	return respuesta;
+}
+
+static uint8_t dht_leer(void) {
+	uint8_t i, j;
+	for (j = 0; j < 8; j++) {
+		while (!(leer_pin(DHT_PUERTO, DHT_PIN))) {
+			// espera que el pin sea alto
+		}
+		esperar(40);
+		// si el pin es bajo
+		if (!(leer_pin(DHT_PUERTO, DHT_PIN))) {
+			i &= ~(1 << (7 - j));   // escribe un 0
+		} else {
+			i |= (1 << (7 - j));  // escribe un 1
+		}
+		while ((leer_pin(DHT_PUERTO, DHT_PIN))) {
+			// espera que el pin sea bajo
+		}
+	}
+	return i;
+}
+
+void dht_obtener_datos(float temperatura, float humedad) {
+
+	uint8_t verificar, temperatura_byte1, temperatura_byte2, humedad_byte1, humedad_byte2;
+	uint16_t suma_control;
+
+	dht_iniciar();
+	verificar = dht_obtener_respuesta();
+	humedad_byte1 = dht_leer();
+	humedad_byte2 = dht_leer();
+	temperatura_byte1 = dht_leer();
+	temperatura_byte2 = dht_leer();
+	suma_control = dht_leer();
+
+	if (suma_control
+			== (humedad_byte1 + humedad_byte2 + temperatura_byte1
+					+ temperatura_byte2)) {
+		humedad = ((humedad_byte1 << 8) | humedad_byte2);
+		temperatura = ((temperatura_byte1 << 8) | temperatura_byte2);
+	}
+}

@@ -1,0 +1,18 @@
+/*
+ * MEF_sistema.h
+ *
+ *  Created on: Dec 6, 2023
+ *      Author: cbiale
+ */
+
+#ifndef API_INC_MEF_SISTEMA_H_
+#define API_INC_MEF_SISTEMA_H_
+
+#include "API_debounce.h"
+#include "API_delay.h"
+#include "lcd.h"
+#include "uart.h"
+#include "port.h"
+
+
+#endif /* API_INC_MEF_SISTEMA_H_ */

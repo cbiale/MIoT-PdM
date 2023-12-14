@@ -1,0 +1,9 @@
+/*
+ * API_bmp280.c
+ *
+ *  Implementa las funciones que manejan el sensor BMP280.
+ *  Created on: Dec 4, 2023
+ *      Author: cbiale
+ */
+
+

@@ -1,0 +1,173 @@
+/*
+ * API_lcd.c
+ *
+ *  Implementa las funciones que manejan el LCD.
+ *
+ *  Created on: Nov 29, 2023
+ *      Author: cbiale
+ */
+
+#include "API_lcd.h"
+
+/* --------------------------------- Constantes --------------------------------- */
+
+#define LCD_DIRECCION 0x27 // direccion I2C del LCD
+
+#define LCD_FILAS     2 // filas del LCD
+#define LCD_COLUMNAS 16 // columnas del LCD
+
+#define LCD_PIN_RS  4
+#define LCD_PIN_RW  5
+#define LCD_PIN_EN  6
+#define LCD_PIN_D0  7
+#define LCD_PIN_D1  8
+#define LCD_PIN_D2  9
+#define LCD_PIN_D3 10
+#define LCD_PIN_D4 11
+#define LCD_PIN_D5 12
+#define LCD_PIN_D6 13
+#define LCD_PIN_D7 14
+
+#define RS_BIT 0 // Register select bit
+#define EN_BIT 2 // Enable bit
+#define BL_BIT 3 // luz de fondo bit
+#define D4_BIT 4 // Datos 4 bit
+#define D5_BIT 5 // Datos 5 bit
+#define D6_BIT 6 // Datos 6 bit
+#define D7_BIT 7 // Datos 7 bit
+
+#define LCD_COMANDO 0         // se transmite un comando
+#define LCD_DATOS   1         // se transmite datos
+
+#define LCD_CMD_LIMPIAR          0b00000001 // Limpiar la pantalla
+#define LCD_CMD_DDRAM_DIRECCION  0b10000000 // Posicionamiento del cursor
+
+// USados en el inicio del lcd (no se usan todas las funcionalidades en este release)
+#define LCD_INICIO_SET              0b00110000
+#define LCD_INICIO_8BITS            0b00010000
+#define LCD_INICIO_4BITS            0b00100000
+#define LCD_INICIO_2LINEAS          0b00001000
+#define LCD_INICIO_5X8PUNTOS        0b00000100
+#define LCD_CONTROL                 0b00001000
+#define LCD_MODO_SET                0b00000100
+#define LCD_MODO_INCREMENTAL        0b00000010
+#define LCD_MODO_DECREMENTAL        0b00000000
+#define LCD_MODO_DESPLAZAMIENTO     0b00000001
+#define LCD_MODO_SIN_DESPLAZAMIENTO 0b00000000
+#define LCD_ENCENDIDO               0b00000100
+#define LCD_APAGADO                 0b00000000
+#define LCD_CURSOR_ENCENDIDO        0b00000010
+#define LCD_CURSOR_APAGADO          0b00000000
+#define LCD_BLINK_ENCENDIDO         0b00000001
+#define LCD_BLINK_APAGADO           0b00000000
+
+#define LCD_LINEA_1_DIRECCION 0x00 // Direccion de primera linea del lcd
+#define LCD_LINEA_2_DIRECCION 0x40 // Direccion de segunda linea del lcd
+
+#define LCD_TIEMPO_ESPERA 100 // tiempo de espera
+#define LCD_LARGO_VALORES 1   // largo de valores a transmitir
+
+#define LCD_LUZ_FONDO_ENCENDIDA 1
+#define LCD_LUZ_FONDO_APAGADA   1
+
+/* ----------------------------- Variables privadas ----------------------------- */
+
+static uint8_t estado_luz_fondo = LCD_LUZ_FONDO_APAGADA;
+
+/* ---------------------- Prototipos de funciones privadas ---------------------- */
+
+static void lcd_escribir_nibble(uint8_t pin, uint8_t valor);
+static void lcd_escribir_codigo(uint8_t comando, uint8_t modo);
+
+/* ---------------------------------- Funciones --------------------------------- */
+
+// referencia: https://web.alfredstate.edu/faculty/weimandn/lcd/lcd_initialization/lcd_initialization_index.html
+void lcd_iniciar() {
+	esperar(50);
+	lcd_escribir_codigo(LCD_INICIO_SET | LCD_INICIO_8BITS, LCD_COMANDO);
+	esperar(5);
+	lcd_escribir_codigo(LCD_INICIO_SET | LCD_INICIO_8BITS, LCD_COMANDO);
+	esperar(1);
+	lcd_escribir_codigo(LCD_INICIO_SET | LCD_INICIO_8BITS, LCD_COMANDO);
+	esperar(1);
+	lcd_escribir_codigo(LCD_INICIO_SET | LCD_INICIO_4BITS, LCD_COMANDO);
+	esperar(1);
+	lcd_escribir_codigo(
+			LCD_INICIO_SET | LCD_INICIO_4BITS | LCD_INICIO_2LINEAS
+					| LCD_INICIO_5X8PUNTOS, LCD_COMANDO);
+	esperar(1);
+	lcd_escribir_codigo(
+	LCD_CONTROL | LCD_APAGADO | LCD_CURSOR_APAGADO | LCD_BLINK_APAGADO,
+	LCD_COMANDO);
+	esperar(1);
+	lcd_escribir_codigo(LCD_CMD_LIMPIAR, LCD_COMANDO);
+	esperar(1);
+	lcd_escribir_codigo(
+	LCD_MODO_SET | LCD_MODO_INCREMENTAL | LCD_MODO_SIN_DESPLAZAMIENTO,
+	LCD_COMANDO);
+	esperar(1);
+	lcd_escribir_codigo(
+			LCD_CONTROL | LCD_ENCENDIDO | LCD_CURSOR_APAGADO | LCD_BLINK_APAGADO,
+			LCD_COMANDO);
+	esperar(1);
+}
+
+void lcd_ubicar(uint8_t fila, uint8_t columna) {
+	if (fila > LCD_FILAS || columna > LCD_COLUMNAS) {
+		manejar_errores();
+	}
+	uint8_t direccion;
+	switch (fila) {
+	case 0:
+		direccion = LCD_LINEA_1_DIRECCION;
+		break;
+	case 1:
+		direccion = LCD_LINEA_2_DIRECCION;
+		break;
+	}
+	direccion = direccion + columna;
+	lcd_escribir_codigo(LCD_CMD_DDRAM_DIRECCION | direccion, LCD_COMANDO);
+	esperar(1);
+}
+
+void lcd_limpiar() {
+	lcd_escribir_codigo(LCD_CMD_LIMPIAR, LCD_COMANDO);
+	esperar(2);
+}
+
+void lcd_escribir_string(const char *cadena) {
+	while (*cadena) {
+		lcd_escribir_codigo(*cadena++, LCD_DATOS);
+	}
+}
+
+void lcd_luz_fondo(bool estado) {
+	if (estado) {
+		estado_luz_fondo = LCD_LUZ_FONDO_ENCENDIDA;
+	} else {
+		estado_luz_fondo = LCD_LUZ_FONDO_APAGADA;
+	}
+}
+
+/* ------------------------------ Funciones privadas ---------------------------- */
+
+static void lcd_escribir_nibble(uint8_t valor, uint8_t modo) {
+	uint8_t dato = valor << D4_BIT;
+	dato |= modo << RS_BIT;
+	dato |= estado_luz_fondo << BL_BIT;
+	dato |= 1 << EN_BIT;
+	I2C_transmitir(LCD_DIRECCION, &dato, LCD_LARGO_VALORES, LCD_TIEMPO_ESPERA);
+	esperar(1);
+	dato &= ~(1 << EN_BIT);
+	I2C_transmitir(LCD_DIRECCION, &dato, LCD_LARGO_VALORES, LCD_TIEMPO_ESPERA);
+}
+
+static void lcd_escribir_codigo(uint8_t comando, uint8_t modo) {
+	if (modo != LCD_COMANDO && modo != LCD_DATOS) {
+		manejar_errores();
+	}
+	uint8_t upper_nibble = comando >> 4;
+	uint8_t lower_nibble = comando & 0x0F;
+	lcd_escribir_nibble(upper_nibble, modo);
+	lcd_escribir_nibble(lower_nibble, modo);
+}

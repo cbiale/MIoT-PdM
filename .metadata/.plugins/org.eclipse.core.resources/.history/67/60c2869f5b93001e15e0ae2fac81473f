@@ -1,0 +1,87 @@
+/*
+ * API_bmp280.c
+ *
+ *  Implementa las funciones que manejan el sensor BMP280.
+ *  Created on: Dec 4, 2023
+ *      Author: cbiale
+ */
+
+#include "API_bmp280.h"
+/*
+ * Voltage utilizado (VCC) de 3.3 volts.
+ *
+ * El pin SCL y SDA permiten la comunicación mediante I2C o SPI.
+ *
+ * El pin CSB permite definir que protocolo se usa
+ * - Conectando a GND se define el uso del protocolo SPI.
+ * - Conectando a VCC se define el uso del protocolo I2C.
+ *
+ * El pin SDO solo se utiliza con I2C:
+ * - Si se pasa un 0 establece la dirección en 0x76.
+ * - Si se pasa un 1 establece la dirección en 0x77.
+ *
+ * El protocolo por defecto es I2c con la dirección en 0x76.
+ * (Se usa en la biblioteca este protocolo y dirección).
+ */
+
+#define I2C_DIRECCION_BMP280 0x76 // direccion I2C del BMP280
+
+#define BMP280_ESPERA        0x00000000U // genera cond. de parada
+#define BMP280_LARGO_LECTURA 6           // largo de lectura en secuencia
+
+// Registros usados
+#define BMP280_REGISTRO_RESET             0xE0 // reset del dispositivo sensor
+#define BMP280_REGISTRO_ID                0x58 // id del dispositivo sensor
+#define BMP280_REGISTRO_ESTADO            0xF3 // bit3 en 1 (leyendo) 0 (no leyendo)
+#define BMP280_REGISTRO_CTRL_MEAS         0xF4 // control de obtención de temperatura y presión
+#define BMP280_REGISTRO_CONFIG            0xF5 // control de obtención de temperatura y presión
+#define BMP280_REGISTRO_PRESION_MSB       0xF7 // bits MSB de valor de presión
+#define BMP280_REGISTRO_PRESION_LSB       0xF8 // bits LSB de valor de presión
+#define BMP280_REGISTRO_PRESION_XLSB      0xF9 // bits XLSB de valor de presión
+#define BMP280_REGISTRO_TEMPERATURA_MSB   0xFA // bits MSB de valor de temperatura
+#define BMP280_REGISTRO_TEMPERATURA_LSB   0xFB // bits LSB de valor de temperatura
+#define BMP280_REGISTRO_TEMPERATURA_XLSB  0xFC // bits XLSB de valor de temperatura
+
+#define BMP280_VALOR_RESET  0xB6
+
+
+
+static void bmp280_escribir_registro (uint8_t registro, uint8_t valor);
+static uint8_t bmp280_leer_registro (uint8_t registro);
+static void bmp280_leer_registro_secuencia (uint8_t registro, uint8_t * respuesta, uint8_t largo);
+
+
+void bmp280_iniciar() {
+
+}
+
+void bmp280_reiniciar () {
+	bmp280_escribir_registro (BMP280_REGISTRO_RESET, BMP280_VALOR_RESET);
+}
+
+void bmp280_leer(int32_t * temperatura, int32_t * presion) {
+	uint8_t buffer[BMP280_LARGO_LECTURA];
+	// se leen datos de presion y temperatura
+	bmp280_leer_registro_secuencia (BMP280_REGISTRO_PRESION_MSB, buffer, BMP280_LARGO_LECTURA);
+	// conversiones
+	*presion =  (int32_t)((buffer[0] << 12) | (buffer[1] << 4) | (buffer[2] >> 4));
+	*temperatura =  (int32_t)((buffer[3] << 12) | (buffer[4] << 4) | (buffer[5] >> 4));
+}
+
+
+static void bmp280_escribir_registro (uint8_t registro, uint8_t valor) {
+	uint8_t datos[2] = { registro, valor };
+	I2C_transmitir(I2C_DIRECCION_BMP280, datos, sizeof(datos), BMP280_ESPERA);
+}
+
+static uint8_t bmp280_leer_registro (uint8_t registro) {
+	uint8_t valor = 0;
+	I2C_transmitir(I2C_DIRECCION_BMP280, &registro, 1, BMP280_ESPERA);
+	I2C_recibir(I2C_DIRECCION_BMP280, &valor, 1, BMP280_ESPERA);
+	return valor;
+}
+
+static void bmp280_leer_registro_secuencia (uint8_t registro, uint8_t * respuesta, uint8_t largo) {
+	I2C_transmitir(I2C_DIRECCION_BMP280, &registro, largo, BMP280_ESPERA);
+	I2C_recibir(I2C_DIRECCION_BMP280, respuesta, largo, BMP280_ESPERA);
+}

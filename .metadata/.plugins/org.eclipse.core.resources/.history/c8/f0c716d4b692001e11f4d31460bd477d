@@ -1,0 +1,34 @@
+/*
+ * API_bmp280.c
+ *
+ *  Implementa las funciones que manejan el sensor BMP280.
+ *  Created on: Dec 4, 2023
+ *      Author: cbiale
+ */
+
+
+/*
+ * Voltage utilizado (VCC) de 3.3 volts.
+ *
+ * El pin SCL y SDA permiten la comunicacion mediante I2C o SPI.
+ *
+ * El pin CSB permite definir que protocolo se usa
+ * - Conectando a GND se define el uso del protocolo SPI.
+ * - Conectando a VCC se define el uso del protocolo I2C.
+ *
+ * El pin SDO solo se utiliza con I2C:
+ * - Si se pasa un 0 establece la direccion en 76.
+ * - Si se pasa un 1 establece la direccion en 77.
+ *
+ * El protocolo por defecto es I2c con la direccion en 76.
+ * (Se usa en la biblioteca ese protocolo y direccion)
+ */
+
+void bmp280_iniciar() {
+
+}
+
+void bmp280_leer(float * temperatura, float * presion) {
+
+}
+
